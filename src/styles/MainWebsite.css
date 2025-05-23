@@ -285,3 +285,27 @@
     color: white;
   }
   
+  /* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a; /* dark track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #D4AF37; /* gold scroll thumb */
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: white;
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D4AF37 #0a0a0a;
+  }
+  
