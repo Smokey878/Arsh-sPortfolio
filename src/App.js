@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import IntroAnimation from './components/IntroAnimation';
+import MainWebsite from './components/MainWebsite';
 
 function App() {
+  const [showMain, setShowMain] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!showMain ? (
+        <IntroAnimation onFinish={() => setShowMain(true)} />
+      ) : (
+        <MainWebsite />
+      )}
+    </>
   );
 }
 
