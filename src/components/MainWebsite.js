@@ -6,28 +6,33 @@ export default function MainWebsite() {
 
   return (
     <div>
-      {/* 🔗 Top Navigation */}
+      {/*Top Navigation*/}
       <nav className="top-nav">
-        <ul>
-          <li><a href="#intro">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#workshops">Workshops & Research</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div className="nav-left">
+        <a href="#intro" className="nav-name">Arsh Mobeen</a>
+      </div>
+        <ul className="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#workshops">Workshops & Research</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#beyond">Beyond Engineering</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
 
       <div className="main-container">
-        {/* 🏠 Intro Section */}
-        <section id="intro" className="intro-section">
+        {/*Intro Section*/}
+        <section class= "intro" id="intro">
           <img
             src="/profile.png"
-            alt="Arsh Mobeen"
+            alt="Arsh Mobeen."
             className="profile-img"
           />
-          <div className="intro-text">
+        
+          <div className="intro-text2" id="intro-text2">
             <h1>Arsh Mobeen</h1>
             <h3>Software Engineering Student at Western University</h3>
             <p>Building systems, solving problems, and crafting experiences through code and design.</p>
@@ -36,9 +41,10 @@ export default function MainWebsite() {
             </a>
           </div>
         </section>
+        <div class="clear-fix"></div>
 
-        {/* 👤 About Me Section */}
-        <section id="about" className="about-section">
+        {/*About Me Section*/}
+         <section class= "about" id="about">
           <h2>About Me</h2>
           <div className="about-tabs">
             <button
@@ -73,8 +79,8 @@ export default function MainWebsite() {
           </div>
         </section>
 
-        {/* 🛠 Skills Section */}
-        <section id="skills" className="skills-section">
+        {/*Skills Section*/}
+         <section class= "skills" id="skills">
           <h2>Skills</h2>
           <ul className="skills-list">
             <li>React</li>
@@ -86,8 +92,8 @@ export default function MainWebsite() {
           </ul>
         </section>
 
-        {/* 🔧 Placeholder for Projects/Contact */}
-        <section id="projects" className="projects-section">
+        {/*Projects Section*/}
+         <section class= "projects" id="projects">
   <h2>Projects</h2>
 
   <div className="projects-grid">
@@ -113,8 +119,8 @@ export default function MainWebsite() {
     </div>
   </div>
 </section>
-
-<section id="workshops" className="workshops-section">
+      {/*Workshops Section*/}       
+ <section class= "workshops" id="workshops">
   <h2>Workshops & Research</h2>
 
   <div className="workshop-list">
@@ -132,8 +138,28 @@ export default function MainWebsite() {
     </div>
   </div>
 </section>
+    {/*Beyond Section*/}
+ <section class= "beyond" id="beyond">
+  <h2>Beyond Engineering</h2>
 
-<section id="gallery" className="gallery-section">
+  <div className="beyond-category">
+    <h3>🏀 Sports & Extracurriculars</h3>
+    <p>I actively play basketball and soccer, and am a consistent gym-goer. These experiences shape my discipline and team mentality. I'm also involved in engineering student clubs that promote hands-on learning and collaboration.</p>
+  </div>
+
+  <div className="beyond-category">
+    <h3>🎉 Events & Leadership</h3>
+    <p>As a member of Western’s Engineering Society and F1 Racing Team, I’ve helped coordinate hackathons, tech nights, and team showcases — balancing creativity with execution under tight timelines.</p>
+  </div>
+
+  <div className="beyond-category">
+    <h3>🚗 Side Hustle: Car Refurbishment</h3>
+    <p>I run a passion project refurbishing and customizing vehicles — with a focus on luxury cars and personalized aesthetic upgrades. My aim is to bring high-end visual identity to both machines and the people who own them.</p>
+  </div>
+</section>
+
+    {/*Gallery Section*/}
+ <section class= "gallery" id="gallery">
   <h2>Engineering Gallery</h2>
 
   <div className="gallery-grid">
@@ -154,8 +180,8 @@ export default function MainWebsite() {
   </div>
 </section>
 
-
-<section id="contact" className="contact-section">
+  {/*Contact Section*/}
+ <section class= "contact" id="contact">
   <h2>Contact Me</h2>
 
   <form

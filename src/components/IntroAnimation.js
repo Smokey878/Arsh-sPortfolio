@@ -36,27 +36,31 @@ export default function IntroAnimation({ onFinish }) {
   return (
     <div className={`intro-container ${fade ? 'fade-out' : 'fade-in'}`} onClick={handleClick}>
       <SpiralCanvas />
+    
+<div className="intro-text">
+  <h1 className="intro-name">
+    <Typewriter
+      words={['Arsh Mobeen']}
+      loop={1}
+      cursor
+      cursorStyle="_"
+      typeSpeed={100}
+      delaySpeed={900}
+    />
+  </h1>
+</div>
 
-      <h1 className="intro-text">
-        <Typewriter
-          words={['Arsh Mobeen']}
-          loop={1}
-          cursor
-          cursorStyle="_"
-          typeSpeed={100}
-          delaySpeed={900}
-        />
-      </h1>
+
 
       <img
         src="/logo.png"
         alt="logo"
         style={{
           position: 'absolute',
-          top: 20,
-          left: 20,
-          opacity: 0.80,
-          width: 120,
+          bottom: 20,
+          right: 20,
+          opacity: 0.35,
+          width: 150,
           pointerEvents: 'none',
           zIndex: 2,
         }}
@@ -67,7 +71,7 @@ export default function IntroAnimation({ onFinish }) {
         position: 'absolute',
         bottom: 20,
         left: 30,
-        color: '#D4AF37',
+        color: '#6A5ACD',
         fontFamily: 'monospace',
         fontSize: '0.95rem',
         opacity: 0.7,
@@ -78,7 +82,7 @@ export default function IntroAnimation({ onFinish }) {
       </div>
 
       {showPrompt && (
-        <p className="proceed-text">Click anywhere to proceed</p>
+        <p className="proceed-text">Click anywhere to proceed.</p>
       )}
     </div>
   );

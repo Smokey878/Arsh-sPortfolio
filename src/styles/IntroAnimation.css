@@ -14,12 +14,22 @@
 
 .intro-text {
   z-index: 3;
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
   text-align: center;
   position: relative;
+  bottom: -15px;
 }
+
+.intro-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  color: white;
+  letter-spacing: -0.02em;
+  text-align: center;
+  z-index: 3;
+}
+
+
+
 
 canvas {
   z-index: 1;
@@ -31,8 +41,9 @@ canvas {
   width: 100%;
   text-align: center;
   color: #C0C0C0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
+  font-family: var(--font-body);
   opacity: 0;
   animation: fadeIn 2s ease forwards;
   z-index: 3;
