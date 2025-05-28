@@ -147,13 +147,13 @@ export default function SpiralCanvas() {
         );
         gradient.addColorStop(0, '#C0C0C0');
         gradient.addColorStop(0.5, '#FFFFFF');
-        gradient.addColorStop(1, '#BFA181');
+        gradient.addColorStop(1, '#4d2569');
 
         ctx.beginPath();
         ctx.strokeStyle = gradient;
         ctx.shadowColor = 'white';
         ctx.shadowBlur = 15;
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 3;
         ctx.moveTo(centerX - underlineLength / 2, underlineY);
         ctx.lineTo(centerX + underlineLength / 2, underlineY);
         ctx.stroke();

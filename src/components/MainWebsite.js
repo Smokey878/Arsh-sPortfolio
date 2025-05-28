@@ -16,8 +16,8 @@ export default function MainWebsite() {
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#workshops">Workshops & Research</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#beyond">Beyond Engineering</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -25,7 +25,7 @@ export default function MainWebsite() {
 
       <div className="main-container">
         {/*Intro Section*/}
-        <section class= "intro" id="intro">
+        <section className= "intro" id="intro">
           <img
             src="/profile.png"
             alt="Arsh Mobeen."
@@ -44,43 +44,57 @@ export default function MainWebsite() {
         <div class="clear-fix"></div>
 
         {/*About Me Section*/}
-         <section class= "about" id="about">
-          <h2>About Me</h2>
-          <div className="about-tabs">
-            <button
-              className={aboutTab === 'education' ? 'active' : ''}
-              onClick={() => setAboutTab('education')}
-            >
-              Education
-            </button>
-            <button
-              className={aboutTab === 'experience' ? 'active' : ''}
-              onClick={() => setAboutTab('experience')}
-            >
-              Experience
-            </button>
-          </div>
+<section className="about" id="about">
+  <h2>About Me</h2>
 
-          <div className="about-content">
-            {aboutTab === 'education' ? (
-              <div>
-                <h3>Western University</h3>
-                <p>B.E.Sc. in Software Engineering (2022 – 2026)</p>
-                <p>Coursework includes Algorithms, Data Structures, Embedded Systems, Software Design, Logic Circuits</p>
-              </div>
-            ) : (
-              <div>
-                <h3>Western Formula Racing — Electronics Design Engineer</h3>
-                <p>Developed embedded systems for vehicle telemetry and performance analysis.</p>
-                <h3>Event Organizer — Engineering Society</h3>
-                <p>Led student workshops and engineering hack events with 100+ attendees.</p>
-              </div>
-            )}
+  <p className="about-blurb">
+    I’m a passionate engineer who thrives at the intersection of code and creativity — whether that’s through leading a team, building embedded systems, or simply learning something new.
+  </p>
+
+  <div className="about-layout">
+    <div className="about-content">
+      <div className="about-tabs">
+        <button
+          className={aboutTab === 'education' ? 'active' : ''}
+          onClick={() => setAboutTab('education')}
+        >
+          Education
+        </button>
+        <button
+          className={aboutTab === 'experience' ? 'active' : ''}
+          onClick={() => setAboutTab('experience')}
+        >
+          Experience
+        </button>
+      </div>
+
+      <div className="about-info">
+        {aboutTab === 'education' ? (
+          <div>
+            <h3>Western University</h3>
+            <p>B.E.Sc. in Software Engineering (2022 – 2026)</p>
+            <p>Coursework includes Algorithms, Data Structures, Embedded Systems, Software Design, Logic Circuits</p>
           </div>
-        </section>
+        ) : (
+          <div>
+            <h3>Western Formula Racing — Electronics Design Engineer</h3>
+            <p>Developed embedded systems for vehicle telemetry and performance analysis.</p>
+            <h3>Event Organizer — Engineering Society</h3>
+            <p>Led student workshops and engineering hack events with 100+ attendees.</p>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div className="about-image">
+      <img src="/profile2.png" alt="About Arsh Mobeen" />
+    </div>
+  </div>
+</section>
+
 
         {/*Skills Section*/}
-         <section class= "skills" id="skills">
+         <section className= "skills" id="skills">
           <h2>Skills</h2>
           <ul className="skills-list">
             <li>React</li>
@@ -93,7 +107,7 @@ export default function MainWebsite() {
         </section>
 
         {/*Projects Section*/}
-         <section class= "projects" id="projects">
+         <section className= "projects" id="projects">
   <h2>Projects</h2>
 
   <div className="projects-grid">
@@ -120,7 +134,7 @@ export default function MainWebsite() {
   </div>
 </section>
       {/*Workshops Section*/}       
- <section class= "workshops" id="workshops">
+ <section className= "workshops" id="workshops">
   <h2>Workshops & Research</h2>
 
   <div className="workshop-list">
@@ -139,7 +153,7 @@ export default function MainWebsite() {
   </div>
 </section>
     {/*Beyond Section*/}
- <section class= "beyond" id="beyond">
+ <section className= "beyond" id="beyond">
   <h2>Beyond Engineering</h2>
 
   <div className="beyond-category">
@@ -159,7 +173,7 @@ export default function MainWebsite() {
 </section>
 
     {/*Gallery Section*/}
- <section class= "gallery" id="gallery">
+ <section className= "gallery" id="gallery">
   <h2>Engineering Gallery</h2>
 
   <div className="gallery-grid">
@@ -181,7 +195,7 @@ export default function MainWebsite() {
 </section>
 
   {/*Contact Section*/}
- <section class= "contact" id="contact">
+ <section className= "contact" id="contact">
   <h2>Contact Me</h2>
 
   <form

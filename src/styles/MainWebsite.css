@@ -23,7 +23,7 @@ h1, h2, h3, .nav-name, .resume-button, .about-tabs button, section h2 {
   color: #ECECEC;
 }
 
-h1 { font-size: var(--text-3xl); }
+h1 { font-size: var(--text-5xl); }
 h2 { font-size: var(--text-2xl); }
 h3 { font-size: var(--text-xl); }
 
@@ -66,6 +66,7 @@ span{
   --text-2xl: 1.875rem;
   --text-3xl: 2.5rem;
   --text-4xl: 3rem;
+  --text-5xl: 5rem;
 
   /* Line Heights */
   --line-tight: 1.2;
@@ -152,8 +153,67 @@ span{
   
   .about-content {
     margin-top: 2rem;
+    margin-bottom: 30rem;
     line-height: 1.6;
   }
+
+  .about {
+  padding: 3rem 2rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.about h2 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-blurb {
+  font-size: var(--text-sm);
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.about-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-info {
+  font-size: var(--text-sm);
+}
+
+.about-image {
+  flex-shrink: 0;
+  width: 250px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-image {
+    width: 60%;
+    margin-top: 1.5rem;
+  }
+}
+
+
   
   .skills-list {
     list-style: none;
