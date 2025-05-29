@@ -18,7 +18,7 @@ export default function SpiralCanvas() {
     const motionCenterX = centerX + motionOffsetX;
     const motionCenterY = centerY + motionOffsetY;
 
-    const underlineY = centerY + 40;
+    const underlineY = centerY + 65;
     const underlineLength = 280;
 
     const numStrings = 7;

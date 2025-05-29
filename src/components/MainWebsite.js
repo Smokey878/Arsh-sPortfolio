@@ -48,7 +48,7 @@ export default function MainWebsite() {
   <h2>About Me</h2>
 
   <p className="about-blurb">
-    I’m a passionate engineer who thrives at the intersection of code and creativity — whether that’s through leading a team, building embedded systems, or simply learning something new.
+    I'm a passionate engineer who thrives at the intersection of code and creativity — whether that's through leading a team, building embedded systems, or simply learning something new.
   </p>
 
   <div className="about-layout">
@@ -93,18 +93,134 @@ export default function MainWebsite() {
 </section>
 
 
-        {/*Skills Section*/}
-         <section className= "skills" id="skills">
-          <h2>Skills</h2>
-          <ul className="skills-list">
-            <li>React</li>
-            <li>Python</li>
-            <li>C++</li>
-            <li>Git</li>
-            <li>Embedded Systems</li>
-            <li>Figma</li>
-          </ul>
-        </section>
+<section className="skills" id="skills">
+  <h2>Skills</h2>
+  <div className="skills-container">
+  <div className="skill-category">
+  <h3>Languages</h3>
+  <ul>
+    <li><i className="devicon-python-plain colored"></i> Python (FastAPI)</li>
+    <li><i className="devicon-java-plain colored"></i> Java</li>
+    <li><i className="devicon-cplusplus-plain colored"></i> C++</li>
+    <li><i className="devicon-javascript-plain colored"></i> JavaScript</li>
+    <li><i className="devicon-typescript-plain colored"></i> TypeScript</li>
+    <li><i className="devicon-csharp-plain colored"></i> C#</li>
+  </ul>
+</div>
+
+
+    <div className="skill-category">
+      <h3>Web & Frameworks</h3>
+      <ul>
+        <li><i className="devicon-react-original colored"></i> React</li>
+        <li><i className="devicon-nodejs-plain colored"></i> Node.js</li>
+        <li><i className="devicon-html5-plain colored"></i> HTML</li>
+        <li><i className="devicon-css3-plain colored"></i> CSS</li>
+        <li><i className="devicon-chrome-plain colored"></i> Frontend & Backend Development</li>
+        <li><i className="devicon-amazonwebservices-original colored"></i> Amazon Web Services</li>
+        <li><i className="devicon-docker-plain colored"></i> Docker</li>
+        <li><i className="devicon-kubernetes-plain colored"></i> Kubernetes</li>
+      </ul>
+    </div>
+
+    <div className="skill-category">
+      <h3>Mechanical & Hardware Design</h3>
+      <ul>
+        <li>
+        <img src="/autocad-logo.png" alt="AutoCAD" className="skill-icon" />
+          AutoCAD
+        </li>
+        <li>
+        <img src="/solidworks-logo.png" alt="SolidWorks" className="skill-icon" />
+          SolidWorks
+        </li>
+        <li><i className="devicon-matlab-plain colored"></i> Simulink</li>
+        <li><i className="devicon-vscode-plain colored"></i> Intel Quartus</li>
+        <li><i className="devicon-matlab-plain colored"></i> MATLAB</li>
+        <li><i className="devicon-postgresql-plain colored"></i> PostgreSQL</li>
+        <li><i className="devicon-redis-plain colored"></i> Redis</li>
+        <li><i className="devicon-ubuntu-plain colored"></i> Gazebo</li>
+        <li><i className="devicon-linux-plain colored"></i> PX4</li>
+        <li><i className="devicon-python-plain colored"></i> ROS 2</li>
+      </ul>
+    </div>
+
+    <div className="skill-category">
+      <h3>Development Workflow</h3>
+      <ul>
+        <li><i className="devicon-jira-plain colored"></i> Agile Development</li>
+        <li><i className="devicon-git-plain colored"></i> Iterative Development</li>
+        <li><i className="devicon-docker-plain colored"></i> Microservices Architecture</li>
+        <li><i className="devicon-git-plain colored"></i> Git</li>
+        <li><i className="devicon-gitlab-plain colored"></i> GitLab</li>
+        <li><i className="devicon-github-original colored"></i> GitHub</li>
+        <li><i className="devicon-jira-plain colored"></i> Jira</li>
+        <li>
+        <img src="/notion-logo.png" alt="Notion" className="skill-icon" />
+          Notion
+        </li>
+        <li><i className="devicon-slack-plain colored"></i> Slack</li>
+      </ul>
+    </div>
+
+    <div className="skill-category">
+      <h3>Cloud & Tools</h3>
+      <ul>
+        <li><i className="devicon-amazonwebservices-original colored"></i> AWS</li>
+        <li><i className="devicon-google-plain colored"></i> Amplitude</li>
+        <li><i className="devicon-pytest-plain colored"></i> Experimentation Frameworks</li>
+        <li><i className="devicon-python-plain colored"></i> Data Analytics</li>
+        <li><i className="devicon-markdown-original"></i> UML Diagrams</li>
+      </ul>
+    </div>
+
+    <div className="skill-category">
+      <h3>Office Suite</h3>
+      <ul>
+      <li>
+        <img src="/word-logo.png" alt="Word" className="skill-icon" />
+          Word
+        </li>
+        <li>
+        <img src="/excel-logo.png" alt="Excel" className="skill-icon" />
+          Excel
+        </li>
+        <li>
+        <img src="/powerpoint-logo.png" alt="PowerPoint" className="skill-icon" />
+          PowerPoint
+        </li>
+        <li>
+        <img src="/sharepoint-logo.png" alt="Sharepoint" className="skill-icon" />
+          Sharepoint
+        </li>
+        <li>
+        <img src="/teams-logo.png" alt="Teams" className="skill-icon" />
+          Teams
+        </li>
+        <li>
+        <img src="/onenote-logo.png" alt="Onenote" className="skill-icon" />
+          Onenote
+        </li>
+      </ul>
+    </div>
+
+    <div className="skill-category">
+      <h3>Embedded & Automotive Systems</h3>
+      <ul>
+        <li><i className="devicon-arduino-plain colored"></i> Arduino</li>
+        <li><i className="devicon-raspberrypi-line colored"></i> Raspberry Pi</li>
+        <li><i className="devicon-embeddedc-plain colored"></i> CAN Bus Protocol</li>
+        <li><i className="devicon-embeddedc-plain colored"></i> Sensor Integration</li>
+        <li><i className="devicon-embeddedc-plain colored"></i> Motor Control Systems</li>
+        <li><i className="devicon-embeddedc-plain colored"></i> Power Electronics Basics</li>
+      </ul>
+    </div>
+
+
+
+  </div>
+</section>
+
 
         {/*Projects Section*/}
          <section className= "projects" id="projects">
@@ -163,7 +279,7 @@ export default function MainWebsite() {
 
   <div className="beyond-category">
     <h3>🎉 Events & Leadership</h3>
-    <p>As a member of Western’s Engineering Society and F1 Racing Team, I’ve helped coordinate hackathons, tech nights, and team showcases — balancing creativity with execution under tight timelines.</p>
+    <p>As a member of Western's Engineering Society and F1 Racing Team, I've helped coordinate hackathons, tech nights, and team showcases — balancing creativity with execution under tight timelines.</p>
   </div>
 
   <div className="beyond-category">
