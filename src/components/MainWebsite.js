@@ -1,11 +1,30 @@
 import { useState } from 'react';
 import '../styles/MainWebsite.css';
+import BeyondSection from './BeyondSection';
+import GallerySection from './GallerySection';
+import { useEffect } from 'react';
+
+
 
 export default function MainWebsite() {
   const [aboutTab, setAboutTab] = useState('education');
+useEffect(() => {
+  const hash = window.location.hash;
+  if (hash) {
+    // Scroll immediately to section after render
+    setTimeout(() => {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'auto' }); // 👈 instant scroll
+      }
+    }, 50);
+  }
+}, []);
+
 
   return (
     <div>
+  <div className="fade-in">
       {/*Top Navigation*/}
       <nav className="top-nav">
       <div className="nav-left">
@@ -15,10 +34,13 @@ export default function MainWebsite() {
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#initiatives">Initiatives & Ventures</a></li>
         <li><a href="#workshops">Workshops & Research</a></li>
         <li><a href="#beyond">Beyond Engineering</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
+      
+        
       </ul>
     </nav>
 
@@ -222,118 +244,148 @@ export default function MainWebsite() {
 </section>
 
 
-        {/*Projects Section*/}
-         <section className= "projects" id="projects">
-  <h2>Projects</h2>
+ <section className="projects" id="projects">
+  <h2 className="section-title">Projects</h2>
 
   <div className="projects-grid">
-    <div className="project-card">
-      <h3>Autonomous Plant Watering System</h3>
-      <p>Built for accessibility using Raspberry Pi, sensors, and Python.</p>
-      <p className="tech">Tech: Python, GPIO, IoT</p>
-      <a href="https://github.com/yourname/project1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    {/* Project 1 */}
+    <a href="/projects/plant-watering" className="project-link">
+      <div className="project-card">
+        <div className="project-image" style={{ backgroundImage: "url('/images/plant-system.jpg')" }} />
+        <div className="project-content">
+          <h3>Autonomous Plant Watering System</h3>
+          <p>Built for accessibility using Raspberry Pi, sensors, and Python.</p>
+          <p className="tech">Tech: Python, GPIO, IoT</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+
+    {/* Project 2 */}
+    <a href="/projects/portfolio" className="project-link">
+      <div className="project-card">
+        <div className="project-image" style={{ backgroundImage: "url('/images/portfolio.jpg')" }} />
+        <div className="project-content">
+          <h3>Portfolio Website</h3>
+          <p>This very website — React-based, fully animated, and custom-built.</p>
+          <p className="tech">Tech: React, CSS, TypewriterJS</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+
+    {/* Project 3 */}
+    <a href="/projects/f1-telemetry" className="project-link">
+      <div className="project-card">
+        <div className="project-image" style={{ backgroundImage: "url('/images/telemetry.jpg')" }} />
+        <div className="project-content">
+          <h3>F1 Telemetry System</h3>
+          <p>Embedded system for live data collection on a Formula-style race car.</p>
+          <p className="tech">Tech: C++, CAN, STM32</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+{/*Initiatives Section */}
+<section className="initiatives" id="initiatives">
+  <h2>Initiatives & Ventures</h2>
+
+  <div className="initiatives-grid">
+    <div className="initiative-card">
+      <h3>Custom Car Refurbishment</h3>
+      <p>A growing side business focused on aesthetic upgrades and refinishing for luxury and sport vehicles. Built a local client base through word-of-mouth and Instagram marketing.</p>
+      <span className="initiative-type">Side Venture</span>
     </div>
 
-    <div className="project-card">
-      <h3>Portfolio Website</h3>
-      <p>This very website — React-based, fully animated, and custom-built.</p>
-      <p className="tech">Tech: React, CSS, TypewriterJS</p>
-      <a href="https://github.com/yourname/portfolio" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    <div className="initiative-card">
+      <h3>Startup Pitch: "ParkSight"</h3>
+      <p>Pitched a real-time parking availability system using camera feeds and ML to optimize city traffic. Advanced to finalist round at the Western Entrepreneurship Challenge 2023.</p>
+      <span className="initiative-type">Startup Pitch</span>
     </div>
 
-    <div className="project-card">
-      <h3>F1 Telemetry System</h3>
-      <p>Embedded system for live data collection on a Formula-style race car.</p>
-      <p className="tech">Tech: C++, CAN, STM32</p>
-      <a href="#project">Private Project</a>
+    <div className="initiative-card">
+      <h3>Creative Studio Concept</h3>
+      <p>Developing a long-term business idea to merge engineering with design for custom watches, apparel, and architecture with high-end aesthetic branding.</p>
+      <span className="initiative-type">Venture Concept</span>
     </div>
   </div>
 </section>
-      {/*Workshops Section*/}       
- <section className= "workshops" id="workshops">
+
+{/*Workshops Section*/}       
+<section className="workshops" id="workshops">
   <h2>Workshops & Research</h2>
 
-  <div className="workshop-list">
-    <div className="workshop-item">
-      <h3>Intro to Embedded Systems Workshop</h3>
-      <p>A hands-on session teaching Raspberry Pi, GPIO, and real-time coding to 50+ engineering students.</p>
-      <span className="type">Workshop</span>
+  <div className="workshop-grid">
+    <div className="workshop-card">
+      <div className="card-content">
+        <h3>Intro to Embedded Systems Workshop</h3>
+        <p>A hands-on session teaching Raspberry Pi, GPIO, and real-time coding to 50+ engineering students.</p>
+        <span className="tag workshop">Workshop</span>
+      </div>
     </div>
 
-    <div className="workshop-item">
-      <h3>Research Poster: Sensor Networks for Smart Agriculture</h3>
-      <p>Investigated wireless data transmission and sensor calibration in harsh outdoor environments.</p>
-      <span className="type">Research</span>
-      <a href="/poster.pdf" target="_blank" rel="noopener noreferrer">View Poster</a>
+    <div className="workshop-card">
+      <div className="card-content">
+        <h3>Research Poster: Sensor Networks for Smart Agriculture</h3>
+        <p>Investigated wireless data transmission and sensor calibration in harsh outdoor environments.</p>
+        <span className="tag research">Research</span>
+        <a href="/poster.pdf" target="_blank" rel="noopener noreferrer" className="view-link">📄 View Poster</a>
+      </div>
     </div>
   </div>
 </section>
+
     {/*Beyond Section*/}
- <section className= "beyond" id="beyond">
-  <h2>Beyond Engineering</h2>
+ <BeyondSection />
 
-  <div className="beyond-category">
-    <h3>🏀 Sports & Extracurriculars</h3>
-    <p>I actively play basketball and soccer, and am a consistent gym-goer. These experiences shape my discipline and team mentality. I'm also involved in engineering student clubs that promote hands-on learning and collaboration.</p>
-  </div>
 
-  <div className="beyond-category">
-    <h3>🎉 Events & Leadership</h3>
-    <p>As a member of Western's Engineering Society and F1 Racing Team, I've helped coordinate hackathons, tech nights, and team showcases — balancing creativity with execution under tight timelines.</p>
-  </div>
+{/* Gallery Section */}
+<GallerySection />
 
-  <div className="beyond-category">
-    <h3>🚗 Side Hustle: Car Refurbishment</h3>
-    <p>I run a passion project refurbishing and customizing vehicles — with a focus on luxury cars and personalized aesthetic upgrades. My aim is to bring high-end visual identity to both machines and the people who own them.</p>
-  </div>
-</section>
-
-    {/*Gallery Section*/}
- <section className= "gallery" id="gallery">
-  <h2>Engineering Gallery</h2>
-
-  <div className="gallery-grid">
-    <div className="gallery-item">
-      <img src="/images/f1-car.jpg" alt="F1 electronics" />
-      <p>Wiring sensors in our Formula-style race car during the 2024 design cycle.</p>
-    </div>
-
-    <div className="gallery-item">
-      <img src="/images/lab-work.jpg" alt="Soldering in lab" />
-      <p>Late-night soldering session for our smart irrigation controller prototype.</p>
-    </div>
-
-    <div className="gallery-item">
-      <img src="/images/hackathon.jpg" alt="Hackathon team" />
-      <p>Presenting our Hack the North submission: a Python-powered emergency alert system.</p>
-    </div>
-  </div>
-</section>
 
   {/*Contact Section*/}
- <section className= "contact" id="contact">
+<section className="contact" id="contact">
   <h2>Contact Me</h2>
+  <p className="contact-subtext">I'd love to hear from you — let's connect and create something great together.</p>
 
   <form
-  className="contact-form"
-  action="https://formspree.io/f/mjkwdjpr" 
-  method="POST"
->
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
+    className="contact-form"
+    action="https://formspree.io/f/mjkwdjpr"
+    method="POST"
+  >
+    <div className="form-row">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+    </div>
 
+    <div className="form-row">
+      <input type="tel" name="phone" placeholder="Phone Number (Optional)" />
+    </div>
+
+    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+
+    <button type="submit" className="submit-button">Send Message</button>
+  </form>
 
   <div className="social-links">
-    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="mailto:your.email@example.com">Email Me</a>
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <i className="fab fa-github"></i> GitHub
+    </a>
+    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+      <i className="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="mailto:your.email@example.com">
+      <i className="fas fa-envelope"></i> Email Me
+    </a>
   </div>
 </section>
 
+
       </div>
+    </div>
     </div>
   );
 }

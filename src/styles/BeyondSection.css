@@ -1,0 +1,79 @@
+.beyond {
+  padding: 4rem 2rem;
+  background: #111;
+  color: #ececec;
+  position: relative;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #444;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.beyond-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.beyond-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+}
+
+.beyond-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 255, 150, 0.15);
+}
+
+.beyond-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.beyond-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #00ffaa;
+}
+
+.beyond-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* Modal Styles */
+.beyond-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.beyond-modal-content {
+  background: #1e1e1e;
+  color: #eee;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  text-align: center;
+}
+
+.modal-note {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 1rem;
+}
