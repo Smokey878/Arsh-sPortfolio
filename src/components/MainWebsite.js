@@ -68,9 +68,14 @@ useEffect(() => {
         {/*About Me Section*/}
 <section className="about" id="about">
   <h2>About Me</h2>
+     <p className="quote">
+      <em>“The best way to predict the future is to engineer it.”</em>
+    </p>
 
   <p className="about-blurb">
-    I'm a passionate engineer who thrives at the intersection of code and creativity — whether that's through leading a team, building embedded systems, or simply learning something new.
+    I'm Arsh Mobeen, a driven Software Engineering student at Western University with a deep-rooted passion for both digital systems and dynamic machines. Whether I’m refining low-level embedded code, analyzing sensor feedback in real-time, or designing user experiences that feel intuitive and elegant, I live at the intersection of logic and creativity.
+    <br /><br />
+    My journey is shaped by two worlds: <strong>software development</strong> and <strong>automotive engineering</strong>. I find joy in transforming abstract concepts into functional, elegant solutions, from crafting responsive UIs to wiring circuits on a telemetry board for a Formula-style electric car. I thrive in fast-paced environments, constantly learning, building, and pushing the boundary of what’s possible.
   </p>
 
   <div className="about-layout">
@@ -94,15 +99,22 @@ useEffect(() => {
         {aboutTab === 'education' ? (
           <div>
             <h3>Western University</h3>
-            <p>B.E.Sc. in Software Engineering (2022 – 2026)</p>
-            <p>Coursework includes Algorithms, Data Structures, Embedded Systems, Software Design, Logic Circuits</p>
+            <p><strong>B.E.Sc. in Software Engineering (2023 – 2027)</strong></p>
+            <p>
+              Exploring systems and innovation through courses in Algorithms, Data Structures,
+              Software Design, Embedded Systems, Digital Logic, and Object-Oriented Development.
+            </p>
           </div>
         ) : (
           <div>
             <h3>Western Formula Racing — Electronics Design Engineer</h3>
-            <p>Developed embedded systems for vehicle telemetry and performance analysis.</p>
-            <h3>Event Organizer — Engineering Society</h3>
-            <p>Led student workshops and engineering hack events with 100+ attendees.</p>
+            <p>
+              Engineered embedded systems for real-time vehicle telemetry, sensor calibration, and power distribution across a competitive EV platform.
+            </p>
+            <h3>Engineering Society — Event Organizer</h3>
+            <p>
+              Led 100+ student events, technical workshops, and hardware hackathons focused on practical innovation and collaborative learning.
+            </p>
           </div>
         )}
       </div>
@@ -248,18 +260,24 @@ useEffect(() => {
   <h2 className="section-title">Projects</h2>
 
   <div className="projects-grid">
-    {/* Project 1 */}
-    <a href="/projects/plant-watering" className="project-link">
-      <div className="project-card">
-        <div className="project-image" style={{ backgroundImage: "url('/images/plant-system.jpg')" }} />
-        <div className="project-content">
-          <h3>Autonomous Plant Watering System</h3>
-          <p>Built for accessibility using Raspberry Pi, sensors, and Python.</p>
-          <p className="tech">Tech: Python, GPIO, IoT</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
+  {/* Project 1 */}
+  <a href="/projects/plant-watering" className="project-link">
+    <div className="project-card">
+      <div
+        className="project-image"
+        style={{ backgroundImage: "url('./plant-watering.png')" }}
+      />
+      <div className="project-content">
+        <h3>Autonomous Plant Watering System</h3>
+        <p>
+          Designed an accessible, portable irrigation solution using a
+          mechanically powered cart that empowers differently abled volunteers to water garden beds independently.
+        </p>
+        <p className="tech">Tech: Python, GPIO, Raspberry Pi, IoT</p>
+        <span className="hover-overlay">→ Click to see more</span>
       </div>
-    </a>
+    </div>
+  </a>
 
     {/* Project 2 */}
     <a href="/projects/portfolio" className="project-link">
