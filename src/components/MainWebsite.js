@@ -292,19 +292,38 @@ useEffect(() => {
       </div>
     </a>
 
-    {/* Project 3 */}
-    <a href="/projects/f1-telemetry" className="project-link">
-      <div className="project-card">
-        <div className="project-image" style={{ backgroundImage: "url('/images/telemetry.jpg')" }} />
-        <div className="project-content">
-          <h3>F1 Telemetry System</h3>
-          <p>Embedded system for live data collection on a Formula-style race car.</p>
-          <p className="tech">Tech: C++, CAN, STM32</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
+    <a href="/projects/PCBuild" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('/images/pcbuild-thumb.jpg')" }} // replace with thumbnail
+    />
+    <div className="project-content">
+      <h3>Custom PC Build</h3>
+      <p>Built a high-performance PC for development, gaming, and rendering tasks.</p>
+      <p className="tech">Tech: RTX 3070, Ryzen 5800X, 32GB RAM</p>
+      <span className="hover-overlay">→ Click to see more</span>
+    </div>
   </div>
+</a>
+
+
+    {/* Project 3 */}
+    <a href="/projects/ConquestGame" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('./conquest-banner.png')" }} // Replace with actual image
+    />
+    <div className="project-content">
+      <h3>Conquest Strategy Game</h3>
+      <p>Text-based decision game where player choices shape the fate of warring nations.</p>
+      <p className="tech">Tech: JavaScript, HTML, CSS</p>
+      <span className="hover-overlay">→ Click to see more</span>
+    </div>
+  </div>
+</a>
+</div>
 </section>
 
 {/*Initiatives Section */}
