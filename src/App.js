@@ -6,6 +6,8 @@ import PlantWatering from './pages/PlantWatering';
 import Portfolio from './pages/Portfolio';
 import ConquestGame from './pages/ConquestGame';
 import PCBuild from './pages/PCBuild';
+import ArtifactOfSalvation from './pages/ArtifactofSalvationGame';
+import FloodTrafficAI from './pages/FloodTrafficAI';
 
 function App() {
   const [showMain, setShowMain] = useState(false);
@@ -29,6 +31,8 @@ function App() {
         <Route path="/projects/portfolio" element={<Portfolio />} />
         <Route path="/projects/ConquestGame" element={<ConquestGame />} />
         <Route path="/projects/PCBuild" element={<PCBuild />} />
+        <Route path="/projects/ArtifactOfSalvation" element={<ArtifactOfSalvation />} />
+        <Route path="/projects/FloodTrafficAI" element={<FloodTrafficAI />} />
       </Routes>
     </Router>
   );

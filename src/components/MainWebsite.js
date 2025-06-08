@@ -323,8 +323,43 @@ useEffect(() => {
     </div>
   </div>
 </a>
+
+
+{/* Project 4 */}
+<a href="/projects/ArtifactOfSalvation" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('./artifact-banner.png')" }} // Replace with your actual image
+    />
+    <div className="project-content">
+      <h3>Artifact of Salvation</h3>
+      <p>3D stealth-action RPG where an archaeologist races to retrieve a relic before a greedy villain.</p>
+      <p className="tech">Tech: Unity, C#, Blender, Photoshop</p>
+      <span className="hover-overlay">→ Click to see more</span>
+    </div>
+  </div>
+</a>
+
+{/* Project 5 */}
+<a href="/projects/FloodTrafficAI" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('./floodlight-banner.png')" }} // Replace with your actual image
+    />
+    <div className="project-content">
+      <h3>Flood-Responsive Traffic Light System</h3>
+      <p>AI-integrated Arduino stoplight that detects flooding and redirects traffic to safety.</p>
+      <p className="tech">Tech: Arduino, C++, AI Logic, Water Sensors, LED Matrix</p>
+      <span className="hover-overlay">→ Click to see more</span>
+    </div>
+  </div>
+</a>
+
 </div>
 </section>
+
 
 {/*Initiatives Section */}
 <section className="initiatives" id="initiatives">

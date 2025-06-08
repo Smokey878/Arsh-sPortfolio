@@ -63,10 +63,10 @@ export default function PlantWatering() {
       </section>
 
       <section className="project-section screenshots">
-        <h2>Screenshots</h2>
+        <h2>Gallery</h2>
         <div className="screenshot-gallery">
-          <img src="/images/plant-system.jpg" alt="Full system view" />
-          <img src="/images/project1-screen2.jpg" alt="Hose connection and control mechanism" />
+          <img src="/plant-watering.png" alt="Full system view" />
+          <img src="/project1-screen2.png" alt="Hose connection and control mechanism" />
         </div>
       </section>
 

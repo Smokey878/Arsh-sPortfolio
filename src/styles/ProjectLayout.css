@@ -1,5 +1,3 @@
-/* ProjectLayout.css — Cohesive, Elegant, Dark UI */
-
 .project-page {
   width: 100%;
   padding: 100px 48px;
@@ -10,7 +8,7 @@
 }
 
 .project-section {
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto 100px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -70,19 +68,30 @@
   border-radius: 50%;
 }
 
+.project-section.screenshots {
+  width: 100%;
+}
+
+.project-section.screenshots h2 {
+  margin-bottom: 40px;
+}
+
 .screenshot-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 24px;
+  width: 100%;
   margin-top: 20px;
 }
 
 .screenshot-gallery img {
-  width: 100%;
+  width: 45%;
+  height: 600px;
   border-radius: 14px;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 0 0 16px rgba(106, 90, 205, 0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background-color: #1a1a1a;
 }
 
 .screenshot-gallery img:hover {
@@ -138,5 +147,15 @@
 
   .project-section.links ul {
     flex-direction: column;
+  }
+
+  .screenshot-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .screenshot-gallery img {
+    width: 100%;
+    margin-bottom: 24px;
   }
 }
