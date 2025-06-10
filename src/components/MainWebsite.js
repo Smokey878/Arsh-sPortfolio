@@ -285,8 +285,8 @@ useEffect(() => {
         <div className="project-image" style={{ backgroundImage: "url('/images/portfolio.jpg')" }} />
         <div className="project-content">
           <h3>Portfolio Website</h3>
-          <p>This very website — React-based, fully animated, and custom-built.</p>
-          <p className="tech">Tech: React, CSS, TypewriterJS</p>
+          <p>This very website - React-based, fully animated, and custom-built.</p>
+          <p className="tech">Tech: React, CSS, JS, HTML, Framer Motion</p>
           <span className="hover-overlay">→ Click to see more</span>
         </div>
       </div>
