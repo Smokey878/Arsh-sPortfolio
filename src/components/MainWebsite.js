@@ -280,23 +280,24 @@ useEffect(() => {
   </a>
 
     {/* Project 2 */}
-    <a href="/projects/portfolio" className="project-link">
-      <div className="project-card">
-        <div className="project-image" style={{ backgroundImage: "url('/images/portfolio.jpg')" }} />
-        <div className="project-content">
-          <h3>Portfolio Website</h3>
-          <p>This very website - React-based, fully animated, and custom-built.</p>
-          <p className="tech">Tech: React, CSS, JS, HTML, Framer Motion</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
+ <a href="/projects/portfolio" className="project-link">
+  <div className="project-card">
+    <div className="project-image" style={{ backgroundImage: "url('./portfolio.png')" }} />
+    <div className="project-content">
+      <h3>Personal Portfolio Website</h3>
+      <p>My fully custom-built personal website, showcasing my projects, experience, and personal brand with smooth animations, modern UI, and responsive design.</p>
+      <p className="tech">Tech: React, JavaScript, CSS3, HTML5, Framer Motion</p>
+      <span className="hover-overlay">→ Click to see more</span>
+    </div>
+  </div>
+</a>
+
 
     <a href="/projects/PCBuild" className="project-link">
   <div className="project-card">
     <div
       className="project-image"
-      style={{ backgroundImage: "url('/images/pcbuild-thumb.jpg')" }} // replace with thumbnail
+      style={{ backgroundImage: "url('./pcbuild.jpg')" }} // replace with thumbnail
     />
     <div className="project-content">
       <h3>Custom PC Build</h3>

@@ -38,57 +38,60 @@ export default function F1Telemetry() {
         </ul>
       </nav>
 
-      <section className="project-section overview">
-        <h1>Project Title</h1>
-        <p className="project-subtitle">Built with React, Node.js, MongoDB</p>
+       <section className="project-section overview">
+        <h1>Personal Portfolio Website</h1>
+        <p className="project-subtitle">Built with React, JavaScript, HTML5, CSS3, Framer Motion</p>
         <p>
-          [Short intro paragraph explaining the project’s purpose, who it helps, and what problem it solves.]
+          This is my personal portfolio website designed to showcase my software engineering projects, academic background, professional experiences, and personal brand. It serves as a central hub for recruiters, collaborators, and anyone interested in learning more about my work and expertise.
         </p>
       </section>
 
       <section className="project-section features">
         <h2>Key Features</h2>
         <ul>
-          <li>Feature one</li>
-          <li>Feature two</li>
-          <li>Feature three</li>
+          <li>Fully responsive design optimized for both desktop and mobile devices.</li>
+          <li>Smooth animations using Framer Motion for modern, interactive transitions.</li>
+          <li>Dedicated project pages with in-depth breakdowns for each major project.</li>
+          <li>Modular React component architecture for scalability and maintainability.</li>
+          <li>Custom smooth-scrolling navigation across multiple sections.</li>
+          <li>Dark theme aesthetic with custom typography and consistent UI/UX.</li>
         </ul>
       </section>
 
       <section className="project-section challenges">
         <h2>Challenges</h2>
         <p>
-          Describe the biggest hurdles — technical or conceptual — and how you solved them.
+          One of the biggest challenges was balancing performance with animations and responsiveness across different devices. Additionally, I had to design a scalable component structure to allow easy future expansion as I add more projects and content. Debugging smooth scroll behavior across different browsers also required some fine-tuning.
         </p>
       </section>
 
       <section className="project-section screenshots">
         <h2>Screenshots</h2>
         <div className="screenshot-gallery">
-          <img src="/images/project1-screen1.jpg" alt="Screenshot 1" />
-          <img src="/images/project1-screen2.jpg" alt="Screenshot 2" />
+          <img src="/images/portfolio-home.jpg" alt="Portfolio Home Page" />
+          <img src="/images/portfolio-projects.jpg" alt="Portfolio Projects Page" />
         </div>
       </section>
 
       <section className="project-section results">
         <h2>Impact & Results</h2>
         <p>
-          What changed after this project was built? Did it speed something up, impress a client, win an award?
+          This portfolio has allowed me to professionally showcase my skills to potential employers, collaborators, and peers. It significantly boosted my online presence and gave me a strong platform to present my work during job applications and networking opportunities.
         </p>
       </section>
 
       <section className="project-section reflection">
         <h2>Reflection</h2>
         <p>
-          What you’d do differently next time or what you learned that helped you grow.
+          In the future, I plan to integrate a blog section, add a backend for dynamic content updates, and include analytics to track visitor engagement. Building this project allowed me to gain deeper experience with React, CSS architecture, and deployment pipelines.
         </p>
       </section>
 
       <section className="project-section links">
         <h2>Project Links</h2>
         <ul>
-          <li><a href="https://github.com/yourusername/project">View on GitHub</a></li>
-          <li><a href="https://yourprojectdemo.com" target="_blank" rel="noopener noreferrer">Live Demo</a></li>
+          <li><a href="https://github.com/yourusername/portfolio" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+          <li><a href="https://yourliveportfolio.com" target="_blank" rel="noopener noreferrer">Live Portfolio</a></li>
         </ul>
       </section>
     </div>
