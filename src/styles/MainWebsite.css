@@ -734,7 +734,7 @@ span{
 }
 
 .submit-button {
-  background-color: #4CAF50;
+  background-color: #6A5ACD;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -745,7 +745,7 @@ span{
 }
 
 .submit-button:hover {
-  background-color: #43a047;
+  background-color: #5844d8;
 }
 
 .social-links {

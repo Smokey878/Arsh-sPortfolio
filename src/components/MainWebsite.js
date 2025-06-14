@@ -369,18 +369,18 @@ useEffect(() => {
   <div className="initiatives-grid">
     <div className="initiative-card">
       <h3>Custom Car Refurbishment</h3>
-      <p>A growing side business focused on aesthetic upgrades and refinishing for luxury and sport vehicles. Built a local client base through word-of-mouth and Instagram marketing.</p>
+      <p>A growing side business focused on aesthetic upgrades and refinishing for luxury and sport vehicles. Built a local client base through word-of-mouth and online marketing.</p>
       <span className="initiative-type">Side Venture</span>
     </div>
 
     <div className="initiative-card">
-      <h3>Startup Pitch: "ParkSight"</h3>
-      <p>Pitched a real-time parking availability system using camera feeds and ML to optimize city traffic. Advanced to finalist round at the Western Entrepreneurship Challenge 2023.</p>
+      <h3>Startup Pitch: "Pharmadrop"</h3>
+      <p>Developed and pitched "Pharmadrop," an on-demand platform for real-time prescription delivery, optimizing pharmacy logistics and improving patient accessibility to medication.</p>
       <span className="initiative-type">Startup Pitch</span>
     </div>
 
     <div className="initiative-card">
-      <h3>Creative Studio Concept</h3>
+      <h3>Creative Studio Concept - To be launched</h3>
       <p>Developing a long-term business idea to merge engineering with design for custom watches, apparel, and architecture with high-end aesthetic branding.</p>
       <span className="initiative-type">Venture Concept</span>
     </div>
@@ -400,15 +400,15 @@ useEffect(() => {
       </div>
     </div>
 
-    <div className="workshop-card">
-      <div className="card-content">
-        <h3>Research Poster: Sensor Networks for Smart Agriculture</h3>
-        <p>Investigated wireless data transmission and sensor calibration in harsh outdoor environments.</p>
-        <span className="tag research">Research</span>
-        <a href="/poster.pdf" target="_blank" rel="noopener noreferrer" className="view-link">📄 View Poster</a>
-      </div>
-    </div>
+<div className="workshop-card">
+  <div className="card-content">
+    <h3>Build-A-Thon: Smith Commerce & Beta-Camp</h3>
+    <p>Presented and pitched an app concept providing senior citizens with prescription medication reminders and delivery through a monthly membership subscription model.</p>
+    <span className="tag research">Startup Pitch</span>
+    <a href="./PharmaDrop - Pharmacist Business.pdf" target="_blank" rel="noopener noreferrer" className="view-link">📄 Learn More</a>
   </div>
+</div>
+</div>
 </section>
 
     {/*Beyond Section*/}
@@ -444,13 +444,13 @@ useEffect(() => {
   </form>
 
   <div className="social-links">
-    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/Smokey878" target="_blank" rel="noopener noreferrer">
       <i className="fab fa-github"></i> GitHub
     </a>
-    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.linkedin.com/in/arsh-mobeen/" target="_blank" rel="noopener noreferrer">
       <i className="fab fa-linkedin"></i> LinkedIn
     </a>
-    <a href="mailto:your.email@example.com">
+    <a href="mailto:arshmobeen87817@gmail.com">
       <i className="fas fa-envelope"></i> Email Me
     </a>
   </div>

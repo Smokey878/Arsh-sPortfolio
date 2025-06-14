@@ -4,20 +4,22 @@ import '../styles/BeyondSection.css';
 
 const beyondItems = [
   {
-    icon: '🏀',
-    title: 'Sports & Extracurriculars',
-    text: `From basketball courts to gym floors, my passion for physical activity fuels my mental discipline. I'm also deeply involved in engineering student clubs, where collaboration turns ideas into action.`,
+    icon: '🚀',
+title: 'Leadership & Involvement',
+text: `As VP Events for Western's Pakistani Students Association, I organized and executed large-scale cultural and networking events. With Western Formula Racing, I contributed to the electronics and data acquisition systems for the team’s race car. Additionally, I support marketing and outreach initiatives for the i3 Institute, developing communication strategies to drive engagement.`,
+
   },
-  {
-    icon: '🎉',
-    title: 'Events & Leadership',
-    text: `Whether it's organizing tech nights or coordinating F1 Racing Team showcases, I thrive in bringing people together under pressure — delivering both structure and flair in execution.`,
-  },
-  {
-    icon: '🚗',
-    title: 'Side Hustle: Car Refurbishment',
-    text: `I refurbish and redesign luxury vehicles — blending engineering with artistry. From aesthetic mods to full transformations, this is where my design instincts meet horsepower.`,
-  },
+{
+  icon: '🎉',
+  title: 'Events & Leadership',
+  text: `As VP Events for Western's Pakistani Students Association, I managed the full cycle of event planning for high-profile cultural galas, networking mixers, and charity fundraisers, often hosting over 300+ attendees. This involved coordinating sponsors, venues, marketing, budgeting, and cross-functional teams, all while delivering seamless experiences under tight deadlines.`,
+},
+{
+  icon: '🚗',
+  title: 'Side Hustle: Car Refurbishment',
+  text: `I refurbish, customize, and redesign luxury vehicles — blending mechanical precision with aesthetic design. From bodywork restoration, paint correction, and interior detailing to performance upgrades and full cosmetic transformations, I apply engineering skill and creative vision to bring high-end automotive projects to life.`,
+},
+
 ];
 
 export default function BeyondSection() {
