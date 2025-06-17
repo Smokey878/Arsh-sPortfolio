@@ -8,6 +8,7 @@ import ConquestGame from './pages/ConquestGame';
 import PCBuild from './pages/PCBuild';
 import ArtifactOfSalvation from './pages/ArtifactofSalvationGame';
 import FloodTrafficAI from './pages/FloodTrafficAI';
+import CarBuild from './pages/CarBuild';
 
 function App() {
   const [showMain, setShowMain] = useState(false);
@@ -33,7 +34,8 @@ function App() {
         <Route path="/projects/PCBuild" element={<PCBuild />} />
         <Route path="/projects/ArtifactOfSalvation" element={<ArtifactOfSalvation />} />
         <Route path="/projects/FloodTrafficAI" element={<FloodTrafficAI />} />
-      </Routes>
+        <Route path="/projects/CarBuild.js" element={<CarBuild />} />
+       </Routes>
     </Router>
   );
 }

@@ -6,10 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; 
+  overflow: hidden;
   flex-direction: column;
   cursor: default;
   transition: opacity 1.2s ease;
+  padding: 1rem;
 }
 
 .intro-text {
@@ -17,6 +18,7 @@
   text-align: center;
   position: relative;
   bottom: -15px;
+  max-width: 90%;
 }
 
 .intro-name {
@@ -26,10 +28,8 @@
   letter-spacing: -0.02em;
   text-align: center;
   z-index: 3;
+  font-size: 4vw; /* scales based on screen width */
 }
-
-
-
 
 canvas {
   z-index: 1;
@@ -37,7 +37,7 @@ canvas {
 
 .proceed-text {
   position: absolute;
-  bottom: 60px;
+  bottom: 5vh;
   width: 100%;
   text-align: center;
   color: #C0C0C0;
@@ -48,12 +48,6 @@ canvas {
   animation: fadeIn 2s ease forwards;
   z-index: 3;
   pointer-events: none;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
 }
 
 /* Fullscreen Reset */
@@ -68,8 +62,7 @@ html, body, #root {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background: black; /* or your theme background */
-
+  background: black;
 }
 
 .fade-section {
@@ -83,4 +76,35 @@ html, body, #root {
 .fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+/* 🔄 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .intro-name {
+    font-size: 6vw;
+  }
+
+  .intro-text {
+    bottom: -5px;
+  }
+
+  .proceed-text {
+    font-size: 0.9rem;
+    bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-name {
+    font-size: 7vw;
+  }
+
+  .proceed-text {
+    font-size: 0.8rem;
+    bottom: 30px;
+  }
+
+  .intro-text {
+    max-width: 95%;
+  }
 }

@@ -68,8 +68,8 @@ export default function F1Telemetry() {
       <section className="project-section screenshots">
         <h2>Screenshots</h2>
         <div className="screenshot-gallery">
-          <img src="/images/portfolio-home.jpg" alt="Portfolio Home Page" />
-          <img src="/images/portfolio-projects.jpg" alt="Portfolio Projects Page" />
+          <img src="/portfoliohome.png" alt="Portfolio Home Page" />
+          <img src="/portfolioprojects.png" alt="Portfolio Projects Page" />
         </div>
       </section>
 

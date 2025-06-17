@@ -358,6 +358,22 @@ useEffect(() => {
   </div>
 </a>
 
+<a href="/projects/CarBuild.js" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('./bmw.jpg')" }} 
+    />
+    <div className="project-content">
+      <h3>Custom BMW F30 Build</h3>
+      <p>A self-tuned BMW 3 series F30 featuring a full body kit, upgraded intercooler, performance air intake, and ambient starlight roof.</p>
+      <p className="tech">Mods: ECU Tune, Front Lip, Rear Diffuser, Intercooler, Cold Air Intake, Starlights</p>
+      <span className="hover-overlay">→ Click to see more</span>
+    </div>
+  </div>
+</a>
+
+
 </div>
 </section>
 

@@ -66,8 +66,8 @@ export default function ConquestGame() {
       <section className="project-section screenshots">
         <h2>Screenshots</h2>
         <div className="screenshot-gallery">
-          <img src="/images/conquest-intro.jpg" alt="Intro screen of the Conquest game" />
-          <img src="/images/conquest-decision.jpg" alt="Decision screen showing strategic choices" />
+          <img src="/conquestintro.png" alt="Intro screen of the Conquest game" />
+          <img src="/conquestdecision.png" alt="Decision screen showing strategic choices" />
         </div>
       </section>
 
