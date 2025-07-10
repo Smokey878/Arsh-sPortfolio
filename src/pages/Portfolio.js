@@ -90,8 +90,7 @@ export default function F1Telemetry() {
       <section className="project-section links">
         <h2>Project Links</h2>
         <ul>
-          <li><a href="https://github.com/yourusername/portfolio" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
-          <li><a href="https://yourliveportfolio.com" target="_blank" rel="noopener noreferrer">Live Portfolio</a></li>
+          <li><a href="https://github.com/Smokey878/Arsh-sPortfolio" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
         </ul>
       </section>
     </div>

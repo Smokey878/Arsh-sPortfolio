@@ -32,12 +32,6 @@ export default function CarBuild() {
         </p>
       </section>
 
-      <section className="project-section links">
-        <h2>Project Media</h2>
-        <ul>
-          <li><a href="https://www.instagram.com/arshmobeen" target="_blank" rel="noopener noreferrer">See Build Highlights on Instagram</a></li>
-        </ul>
-      </section>
 
       <section className="project-section features">
         <h2>Key Features</h2>
@@ -59,12 +53,6 @@ export default function CarBuild() {
         </p>
       </section>
 
-      <section className="project-section screenshots">
-        <h2>Gallery</h2>
-        <div className="screenshot-gallery">
-          <img src="/f30front.jpg" alt="Front view of the modified BMW F30" />
-        </div>
-      </section>
 
       <section className="project-section results">
         <h2>Impact & Results</h2>

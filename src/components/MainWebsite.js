@@ -265,7 +265,7 @@ useEffect(() => {
     <div className="project-card">
       <div
         className="project-image"
-        style={{ backgroundImage: "url('./plant-watering.png')" }}
+        style={{ backgroundImage: "url('./plant-watering1.png')" }}
       />
       <div className="project-content">
         <h3>Autonomous Plant Watering System</h3>
@@ -297,7 +297,7 @@ useEffect(() => {
   <div className="project-card">
     <div
       className="project-image"
-      style={{ backgroundImage: "url('./pcbuild.jpg')" }} // replace with thumbnail
+      style={{ backgroundImage: "url('./pcbuild.png')" }} // replace with thumbnail
     />
     <div className="project-content">
       <h3>Custom PC Build</h3>
@@ -331,7 +331,7 @@ useEffect(() => {
   <div className="project-card">
     <div
       className="project-image"
-      style={{ backgroundImage: "url('./artifact-banner.png')" }} // Replace with your actual image
+      style={{ backgroundImage: "url('./artifactbanner.png')" }} // Replace with your actual image
     />
     <div className="project-content">
       <h3>Artifact of Salvation</h3>
@@ -347,7 +347,7 @@ useEffect(() => {
   <div className="project-card">
     <div
       className="project-image"
-      style={{ backgroundImage: "url('./floodlight-banner.png')" }} // Replace with your actual image
+      style={{ backgroundImage: "url('./flood-sensor.png')" }} // Replace with your actual image
     />
     <div className="project-content">
       <h3>Flood-Responsive Traffic Light System</h3>

@@ -34,9 +34,9 @@ export default function ArtifactOfSalvation() {
       </section>
 
       <section className="project-section links">
-        <h2>Project Demo</h2>
+        <h2>Project Code</h2>
         <ul>
-          <li><a href="https://sites.google.com/view/arshmobeensgamesite" target="_blank" rel="noopener noreferrer">Play the Prototype</a></li>
+          <li><a href="https://github.com/AlexandraLHeureuxECE/final-project-fantastic6" target="_blank" rel="noopener noreferrer">The Github</a></li>
         </ul>
       </section>
 
@@ -63,8 +63,8 @@ export default function ArtifactOfSalvation() {
       <section className="project-section screenshots">
         <h2>Screenshots</h2>
         <div className="screenshot-gallery">
-          <img src="/images/artifact-temple.jpg" alt="Temple environment in Artifact of Salvation" />
-          <img src="/images/artifact-bossfight.jpg" alt="Boss confrontation with Phineus Valor" />
+          <img src="/artifact-temple.png" alt="Temple environment in Artifact of Salvation" />
+          <img src="/artifact-banner.png" alt="Boss confrontation with Phineus Valor" />
         </div>
       </section>
 

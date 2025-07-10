@@ -63,8 +63,8 @@ export default function FloodTrafficAI() {
       <section className="project-section screenshots">
         <h2>Screenshots</h2>
         <div className="screenshot-gallery">
-          <img src="/images/flood-sensor.jpg" alt="Water sensor setup with Arduino" />
-          <img src="/images/flood-light-demo.jpg" alt="LED arrow light in action during fog simulation" />
+          <img src="/floodlight-banner.png" alt="Water sensor setup with Arduino" />
+          <img src="/flood-light-demo.png" alt="LED arrow light in action during fog simulation" />
         </div>
       </section>
 
