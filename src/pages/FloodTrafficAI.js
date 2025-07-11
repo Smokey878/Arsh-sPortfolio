@@ -28,7 +28,7 @@ export default function FloodTrafficAI() {
         <p>
           This project solves a critical problem faced by rural flood-prone communities: the lack of real-time, GPS-independent guidance
           during flooding events. We engineered an AI-integrated Arduino traffic light system that detects rising water levels and
-          activates directional LED arrows to reroute traffic away from dangerous zones—especially helpful in areas with unreliable
+          activates directional LED arrows to reroute traffic away from dangerous zones, especially helpful in areas with unreliable
           cell service.
         </p>
       </section>

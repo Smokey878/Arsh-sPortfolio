@@ -60,8 +60,8 @@ export default function PCBuild() {
       <section className="project-section screenshots">
         <h2>Build Photos</h2>
         <div className="screenshot-gallery">
-          <img src="/pcbuildfull.png" alt="Completed PC Build" />
-          <img src="/pcbuildcables.png" alt="Cable management view" />
+          <img src="/pcbuildfull.jpg" alt="Completed PC Build" />
+          <img src="/pcbuildcables.jpg" alt="Cable management view" />
         </div>
       </section>
 

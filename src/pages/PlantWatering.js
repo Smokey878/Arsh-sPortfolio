@@ -85,7 +85,7 @@ export default function PlantWatering() {
         <p>
           This project taught us the importance of designing with empathy. It highlighted how seemingly simple tasks
           like watering can become complex without accessibility in mind. We’d love to integrate smart monitoring
-          in future iterations—such as soil moisture sensors or timed valves—while retaining the simplicity that makes
+          in future iterations, such as soil moisture sensors or timed valves, while retaining the simplicity that makes
           this system so effective.
         </p>
       </section>

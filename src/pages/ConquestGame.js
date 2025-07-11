@@ -28,8 +28,8 @@ export default function ConquestGame() {
         <p className="project-subtitle">JavaScript · Game Design · Storytelling · Interactive UI · Logic Trees</p>
         <p>
           <em>Conquest</em> is a strategic text-based game simulating the tension, tactics, and triumph of leadership
-          in a fictional war between two states—Aratium and Vaskos. The player takes on the role of a state leader,
-          choosing one of four strategic stances at the outset—diplomatic, warlike, cunning, or humble—and making
+          in a fictional war between two states, Aratium and Vaskos. The player takes on the role of a state leader,
+          choosing one of four strategic stances at the outset, diplomatic, warlike, cunning, or humble, and making
           pivotal decisions throughout a branching narrative. The objective is to accumulate 15 victory points through
           a series of high-stakes encounters, each shaped by player choice, logic, and critical thinking.
         </p>

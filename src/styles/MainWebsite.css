@@ -536,7 +536,7 @@ span{
   font-weight: 500;
 }
 
-  .workshops-section {
+  .pps-section {
     margin-bottom: 15rem;
   }
   
@@ -570,8 +570,8 @@ span{
 
 .workshop-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 255, 170, 0.2);
-  border-color: #00ffaa;
+  box-shadow: 0 10px 20px rgba(64, 2, 92, 0.438);
+  border-color:  #6A5ACD ;
 }
 
 .card-content h3 {
@@ -585,6 +585,7 @@ span{
   color: #ccc;
   margin-bottom: 1rem;
 }
+
 
 .tag {
   padding: 0.25rem 0.75rem;
@@ -730,7 +731,7 @@ span{
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #4CAF50;
+  border-color:  #6A5ACD ;
   outline: none;
 }
 
@@ -765,7 +766,7 @@ span{
 }
 
 .social-links a:hover {
-  color: #4CAF50;
+  color:  #6A5ACD ;
 }
 
 .social-links i {
@@ -829,7 +830,7 @@ span{
 
 .beyond-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 255, 150, 0.15);
+  box-shadow: 0 8px 20px rgba(78, 5, 138, 0.678);
 }
 
 .beyond-icon {

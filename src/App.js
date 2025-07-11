@@ -15,27 +15,27 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-       <Route
-  path="/"
-  element={
-    !showMain && window.location.hash === '' ? (
-      <IntroAnimation onFinish={() => setShowMain(true)} />
-    ) : (
-      <MainWebsite />
-    )
-  }
-/>
 
-        {/* ✅ Fixed route paths below */}
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            !showMain && window.location.hash === '' ? (
+              <IntroAnimation onFinish={() => setShowMain(true)} />
+            ) : (
+              <MainWebsite />
+            )
+          }
+        />
         <Route path="/projects/plant-watering" element={<PlantWatering />} />
         <Route path="/projects/portfolio" element={<Portfolio />} />
         <Route path="/projects/ConquestGame" element={<ConquestGame />} />
         <Route path="/projects/PCBuild" element={<PCBuild />} />
         <Route path="/projects/ArtifactOfSalvation" element={<ArtifactOfSalvation />} />
         <Route path="/projects/FloodTrafficAI" element={<FloodTrafficAI />} />
-        <Route path="/projects/CarBuild.js" element={<CarBuild />} />
-       </Routes>
+        <Route path="/projects/CarBuild" element={<CarBuild />} />
+      </Routes>
     </Router>
   );
 }

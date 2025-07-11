@@ -397,7 +397,7 @@ useEffect(() => {
 
     <div className="initiative-card">
       <h3>Creative Studio Concept - To be launched</h3>
-      <p>Developing a long-term business idea to merge engineering with design for custom watches, apparel, and architecture with high-end aesthetic branding.</p>
+      <p>Developing a long-term business idea to merge engineering with design for custom watches, custom automotive tunes, apparel, and architecture with high-end aesthetic branding.</p>
       <span className="initiative-type">Venture Concept</span>
     </div>
   </div>
@@ -416,15 +416,33 @@ useEffect(() => {
       </div>
     </div>
 
-<div className="workshop-card">
-  <div className="card-content">
-    <h3>Build-A-Thon: Smith Commerce & Beta-Camp</h3>
-    <p>Presented and pitched an app concept providing senior citizens with prescription medication reminders and delivery through a monthly membership subscription model.</p>
-    <span className="tag research">Startup Pitch</span>
-    <a href="./PharmaDrop - Pharmacist Business.pdf" target="_blank" rel="noopener noreferrer" className="view-link">📄 Learn More</a>
+    <div className="workshop-card">
+      <div className="card-content">
+        <h3>Build-A-Thon: Smith Commerce & Beta-Camp</h3>
+        <p>Presented and pitched an app concept providing senior citizens with prescription medication reminders and delivery through a monthly membership subscription model.</p>
+        <span className="tag research">Startup Pitch</span>
+        <a href="./PharmaDrop - Pharmacist Business.pdf" target="_blank" rel="noopener noreferrer" className="view-link">📄 Learn More</a>
+      </div>
+    </div>
+
+    <div className="workshop-card">
+      <div className="card-content">
+        <h3>Effect of Viscosity on Impact Time</h3>
+        <p>Investigated how different fluid viscosities affect the time taken for a ball bearing to descend through them using projectile motion and Stokes’ Law.</p>
+        <span className="tag research">Research</span>
+        <a href="./How Does Viscosity of a Fluid Affect the Time Taken to Impact the Surface.docx" target="_blank" rel="noopener noreferrer" className="view-link">📄 View Research</a>
+      </div>
+    </div>
+
+    <div className="workshop-card">
+      <div className="card-content">
+        <h3>Boiling Points of Hydrocarbons</h3>
+        <p>Analyzed how molar mass, chain structure, and double bond positions affect boiling points in alkanes and alkenes through a chemistry database study.</p>
+        <span className="tag research">Research</span>
+        <a href="./Chemistry IA ~ Arsh Mobeen.docx" target="_blank" rel="noopener noreferrer" className="view-link">📄 View Research</a>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </section>
 
     {/*Beyond Section*/}
