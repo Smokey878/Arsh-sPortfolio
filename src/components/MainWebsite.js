@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 
 export default function MainWebsite() {
-  const [aboutTab, setAboutTab] = useState('education');
+  const [aboutTab, setAboutTab] = useState('experience');
 useEffect(() => {
   const hash = window.location.hash;
   if (hash) {
@@ -82,16 +82,16 @@ useEffect(() => {
     <div className="about-content">
       <div className="about-tabs">
         <button
-          className={aboutTab === 'education' ? 'active' : ''}
-          onClick={() => setAboutTab('education')}
-        >
-          Education
-        </button>
-        <button
           className={aboutTab === 'experience' ? 'active' : ''}
           onClick={() => setAboutTab('experience')}
         >
           Experience
+        </button>
+        <button
+          className={aboutTab === 'education' ? 'active' : ''}
+          onClick={() => setAboutTab('education')}
+        >
+          Education
         </button>
       </div>
 
@@ -139,6 +139,7 @@ useEffect(() => {
     <li><i className="devicon-javascript-plain colored"></i> JavaScript</li>
     <li><i className="devicon-typescript-plain colored"></i> TypeScript</li>
     <li><i className="devicon-csharp-plain colored"></i> C#</li>
+    <li><i className="devicon-java-plain colocred"></i>Java</li>
   </ul>
 </div>
 
@@ -449,8 +450,6 @@ useEffect(() => {
  <BeyondSection />
 
 
-{/* Gallery Section */}
-<GallerySection />
 
 
   {/*Contact Section*/}
