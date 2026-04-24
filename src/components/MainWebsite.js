@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import '../styles/MainWebsite.css';
 import BeyondSection from './BeyondSection';
-import GallerySection from './GallerySection';
 import { useEffect } from 'react';
 
 
@@ -37,7 +36,6 @@ useEffect(() => {
         <li><a href="#initiatives">Initiatives & Ventures</a></li>
         <li><a href="#workshops">Workshops & Research</a></li>
         <li><a href="#beyond">Beyond Engineering</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       
         
