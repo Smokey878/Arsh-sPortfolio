@@ -9,9 +9,14 @@ import PCBuild from './pages/PCBuild';
 import ArtifactOfSalvation from './pages/ArtifactofSalvationGame';
 import FloodTrafficAI from './pages/FloodTrafficAI';
 import CarBuild from './pages/CarBuild';
+import AbyssGPT from './pages/AbyssGPT';
+import SpriteAdventureGame from './pages/SpriteAdventureGame';
 
 function App() {
   const [showMain, setShowMain] = useState(false);
+  const shouldSkipIntro =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(window.location.search).get('skipIntro') === 'true';
 
   return (
     <Router>
@@ -21,7 +26,7 @@ function App() {
         <Route
           path="/"
           element={
-            !showMain && window.location.hash === '' ? (
+            !showMain && window.location.hash === '' && !shouldSkipIntro ? (
               <IntroAnimation onFinish={() => setShowMain(true)} />
             ) : (
               <MainWebsite />
@@ -35,6 +40,8 @@ function App() {
         <Route path="/projects/ArtifactOfSalvation" element={<ArtifactOfSalvation />} />
         <Route path="/projects/FloodTrafficAI" element={<FloodTrafficAI />} />
         <Route path="/projects/CarBuild" element={<CarBuild />} />
+        <Route path="/projects/AbyssGPT" element={<AbyssGPT />} />
+        <Route path="/projects/SpriteAdventureGame" element={<SpriteAdventureGame />} />
       </Routes>
     </Router>
   );

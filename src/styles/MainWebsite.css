@@ -419,86 +419,152 @@ span{
 
 .projects-grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr; /* default: single column */
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 }
 
 @media (min-width: 768px) {
   .projects-grid {
-    grid-template-columns: 1fr 1fr; /* 2 columns on tablet and up */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+@media (min-width: 1180px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .project-link {
   text-decoration: none;
   color: inherit;
   display: block;
+  min-height: 100%;
 }
 
 
 
 .hover-overlay {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 1rem;
-  font-size: 0.9rem;
-  color: #4fc3f7;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  color: #d7d3ff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition: color 0.25s ease;
 }
 
-.project-card:hover .hover-overlay {
-  opacity: 1;
-  transform: translateY(0);
+.hover-overlay span {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover .hover-overlay span {
+  transform: translateX(4px);
 }
 
 
 .project-card {
   display: flex;
-  background-color: #1a1a1a;
-  border-radius: 1rem;
+  flex-direction: column;
+  min-height: 100%;
+  border: 1px solid rgba(106, 90, 205, 0.18);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.014)),
+    rgba(24, 24, 26, 0.8);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
   position: relative;
   cursor: pointer;
-
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .project-card:hover {
- transform: translateY(-6px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+  transform: translateY(-7px);
+  border-color: rgba(106, 90, 205, 0.58);
+  background:
+    linear-gradient(145deg, rgba(106, 90, 205, 0.12), rgba(79, 195, 247, 0.034)),
+    rgba(24, 24, 26, 0.88);
+  box-shadow: 0 20px 46px rgba(64, 2, 92, 0.34);
 }
 
 
 .project-image {
-  width: 30%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background-size: cover;
   background-position: center;
   min-height: 180px;
+  overflow: hidden;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.project-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.5)),
+    linear-gradient(135deg, rgba(106, 90, 205, 0.18), rgba(79, 195, 247, 0.06));
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  min-height: 70%;
+  padding: 1rem;
+  color: #f7f7ff;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.project-card:hover .project-image-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .project-content {
-  padding: 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(1rem, 2vw, 1.25rem);
   flex: 1;
 }
 
 .project-content h3 {
-  font-size: 1.4rem;
+  color: #fff;
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
   margin-bottom: 0.5rem;
 }
 
 .project-content p {
-  margin: 0.5rem 0;
-  line-height: 1.4;
-  font-size: 0.80rem;
+  margin: 0 0 0.8rem;
+  line-height: 1.5;
+  font-size: 0.88rem;
+  color: #cfcfd7;
 }
 
 .project-content .tech {
-  font-size: 0.9rem;
-  margin-bottom: -2rem;
-  color: #bbb;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  color: #9f96dd;
+  font-weight: 600;
 }
 
 .project-content a {
@@ -510,11 +576,13 @@ span{
   transition: color 0.3s ease;
 }
 
-.project-image {
-  transition: transform 0.4s ease;
-}
 .project-card:hover .project-image {
-  transform: scale(1.05);
+  transform: scale(1.035);
+  filter: saturate(1.08);
+}
+
+.project-card:hover .project-image::after {
+  opacity: 0.72;
 }
 
 
@@ -1226,7 +1294,7 @@ h3 {
 }
 
 .project-image {
-  width: clamp(150px, 32%, 230px);
+  width: 100%;
   min-height: 190px;
 }
 

@@ -1,90 +1,45 @@
 import '../styles/ProjectLayout.css';
+import ProjectCaseStudy from '../components/ProjectCaseStudy';
+import ProjectShell from '../components/ProjectShell';
 
 export default function ArtifactOfSalvation() {
-  const redirectToSection = (sectionId) => {
-    window.location.href = `/#${sectionId}`;
-  };
-
   return (
-    <div className="project-page">
-      <nav className="top-nav">
-        <div className="nav-left">
-          <a href="/" className="nav-name">Arsh Mobeen</a>
-        </div>
-        <ul className="nav-links">
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("about"); }}>About</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("skills"); }}>Skills</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("projects"); }}>Projects</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("workshops"); }}>Workshops & Research</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("beyond"); }}>Beyond Engineering</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("gallery"); }}>Gallery</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("contact"); }}>Contact</a></li>
-        </ul>
-      </nav>
-
-      <section className="project-section overview">
-        <h1>Artifact of Salvation: Stealth-Action RPG</h1>
-        <p className="project-subtitle">Unity · C# · RPG Mechanics · Combat Design · Storytelling</p>
-        <p>
-          <em>Artifact of Salvation</em> is a 3D stealth-based RPG in which you play as Sid, an infamous archaeologist
-          turned rogue hero. Contracted by a global conglomerate but driven by personal motives, Sid must retrieve
-          a world-saving artifact before it falls into the hands of Phineus Valor, a corrupt corporate heir.
-          Players progress through six immersive levels involving puzzles, enemies, stealth, and boss fights.
-        </p>
-      </section>
-
-      <section className="project-section links">
-        <h2>Project Code</h2>
-        <ul>
-          <li><a href="https://github.com/AlexandraLHeureuxECE/final-project-fantastic6" target="_blank" rel="noopener noreferrer">The Github</a></li>
-        </ul>
-      </section>
-
-      <section className="project-section features">
-        <h2>Key Features</h2>
-        <ul>
-          <li>Multi-act story-driven gameplay with high-stakes narrative</li>
-          <li>Real-time combat with melee and ranged weapons (bow, sword)</li>
-          <li>Stealth mechanics: sneak, distract enemies, perform silent takedowns</li>
-          <li>Dynamic boss fights, environmental traps, and chase sequences</li>
-          <li>XP-based leveling, inventory system, blacksmith and angel NPCs</li>
-        </ul>
-      </section>
-
-      <section className="project-section challenges">
-        <h2>Challenges</h2>
-        <p>
-          Designing meaningful stealth and combat mechanics in Unity required implementing enemy detection logic,
-          environmental triggers, and animation transitions. Managing a clean architecture for inventory, XP, and class
-          hierarchies was also key to balancing scalability with player experience.
-        </p>
-      </section>
-
-      <section className="project-section screenshots">
-        <h2>Screenshots</h2>
-        <div className="screenshot-gallery">
-          <img src="/artifact-temple.png" alt="Temple environment in Artifact of Salvation" />
-          <img src="/artifact-banner.png" alt="Boss confrontation with Phineus Valor" />
-        </div>
-      </section>
-
-      <section className="project-section results">
-        <h2>Impact & Results</h2>
-        <p>
-          The game was highly praised during class demos for its storytelling, gameplay variety, and character design.
-          It demonstrates advanced Unity development, strong code architecture, and an engaging player loop suitable
-          for portfolio and professional pitches.
-        </p>
-      </section>
-
-      <section className="project-section reflection">
-        <h2>Reflection</h2>
-        <p>
-          Working on this game helped me master character-controller mechanics, AI pathfinding, and inventory systems.
-          I also learned how to build multi-phase enemy encounters and intertwine story with gameplay flow. In future
-          updates, I'd like to add voice acting, an expanded open world, and cutscenes powered by Unity Timeline.
-        </p>
-      </section>
-    </div>
+    <ProjectShell>
+      <ProjectCaseStudy
+        title="Artifact of Salvation"
+        summary="A Unity stealth-action RPG prototype with combat, puzzles, narrative progression, and multi-level gameplay."
+        tech={['Unity', 'C#', 'RPG Systems', 'Combat Design', 'Blender', 'Photoshop']}
+        heroImage="/artifactbanner.png"
+        heroAlt="Artifact of Salvation game banner"
+        snapshot={[
+          { label: 'Role', value: 'Gameplay + systems' },
+          { label: 'Timeline', value: 'Team game project' },
+          { label: 'Focus', value: 'Stealth and RPG mechanics' },
+          { label: 'Output', value: 'Playable Unity prototype' },
+        ]}
+        overview="Artifact of Salvation follows Sid, an archaeologist racing to recover a world-saving relic before it falls into the wrong hands. The project combines stealth, combat, exploration, puzzles, and RPG progression into a playable 3D prototype."
+        problem="The main challenge was building multiple gameplay systems that felt connected: enemy detection, combat, inventory, leveling, scripted events, and story progression all needed to work together without overwhelming the player."
+        approach={[
+          'Implemented gameplay loops around stealth movement, enemy encounters, puzzle solving, and boss progression.',
+          'Structured C# scripts for player control, enemy behavior, inventory, XP, and interaction systems.',
+          'Designed levels around pacing: exploration, tension, combat, and reward.',
+          'Combined custom assets, environmental design, and UI feedback to support the narrative.',
+        ]}
+        technical={[
+          'Unity and C# power player movement, combat states, interaction triggers, and progression logic.',
+          'Enemy behavior uses detection ranges, environmental triggers, and encounter scripting.',
+          'RPG systems include inventory handling, XP-based progression, NPC interactions, and item feedback.',
+          'Art and presentation were supported through Blender, Photoshop, and Unity scene composition.',
+        ]}
+        images={[
+          { src: '/artifact-temple.png', alt: 'Temple environment in Artifact of Salvation', caption: 'Temple exploration environment.' },
+          { src: '/artifact-banner.png', alt: 'Artifact of Salvation boss scene', caption: 'Story and confrontation imagery.' },
+        ]}
+        outcome="The prototype was praised for its story ambition and variety of gameplay systems. It strengthened my ability to connect object-oriented code architecture with player-facing design and game feel."
+        links={[
+          { label: 'View GitHub Repository', href: 'https://github.com/AlexandraLHeureuxECE/final-project-fantastic6' },
+        ]}
+      />
+    </ProjectShell>
   );
 }

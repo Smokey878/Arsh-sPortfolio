@@ -1,95 +1,45 @@
 import '../styles/ProjectLayout.css';
+import ProjectCaseStudy from '../components/ProjectCaseStudy';
+import ProjectShell from '../components/ProjectShell';
 
 export default function ConquestGame() {
-  const redirectToSection = (sectionId) => {
-    window.location.href = `/#${sectionId}`;
-  };
-
   return (
-    <div className="project-page">
-      {/*Top Navigation*/}
-      <nav className="top-nav">
-        <div className="nav-left">
-          <a href="/" className="nav-name">Arsh Mobeen</a>
-        </div>
-        <ul className="nav-links">
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("about"); }}>About</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("skills"); }}>Skills</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("projects"); }}>Projects</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("workshops"); }}>Workshops & Research</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("beyond"); }}>Beyond Engineering</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("gallery"); }}>Gallery</a></li>
-          <li><a href="/" onClick={(e) => { e.preventDefault(); redirectToSection("contact"); }}>Contact</a></li>
-        </ul>
-      </nav>
-
-      <section className="project-section overview">
-        <h1>Conquest: Strategy-Based Decision Game</h1>
-        <p className="project-subtitle">JavaScript · Game Design · Storytelling · Interactive UI · Logic Trees</p>
-        <p>
-          <em>Conquest</em> is a strategic text-based game simulating the tension, tactics, and triumph of leadership
-          in a fictional war between two states, Aratium and Vaskos. The player takes on the role of a state leader,
-          choosing one of four strategic stances at the outset, diplomatic, warlike, cunning, or humble, and making
-          pivotal decisions throughout a branching narrative. The objective is to accumulate 15 victory points through
-          a series of high-stakes encounters, each shaped by player choice, logic, and critical thinking.
-        </p>
-      </section>
-
-      <section className="project-section links">
-        <h2>Project Demo</h2>
-        <ul>
-          <li><a href="https://sites.google.com/view/arshmobeensgamesite" target="_blank" rel="noopener noreferrer">Play the Game</a></li>
-        </ul>
-      </section>
-
-      <section className="project-section features">
-        <h2>Key Features</h2>
-        <ul>
-          <li>Player-driven narrative with strategic choice affecting every outcome</li>
-          <li>Multiple starting strategies: warlike, diplomatic, cunning, and humble</li>
-          <li>Victory system based on earning points through successful decisions</li>
-          <li>Custom character skins and selectable state allegiance</li>
-          <li>Highly replayable due to branching logic paths and unique scenarios</li>
-        </ul>
-      </section>
-
-      <section className="project-section challenges">
-        <h2>Challenges</h2>
-        <p>
-          Balancing the complexity of choices while maintaining code simplicity was a key challenge. Given the large
-          number of decision paths, the game logic relied heavily on nested <code>if</code> statements. Structuring
-          these in a readable and scalable way required careful planning. Another challenge was designing impactful
-          scenarios that felt immersive and distinct while keeping the mechanics lightweight and browser-compatible.
-        </p>
-      </section>
-
-      <section className="project-section screenshots">
-        <h2>Screenshots</h2>
-        <div className="screenshot-gallery">
-          <img src="/conquestintro.png" alt="Intro screen of the Conquest game" />
-          <img src="/conquestdecision.png" alt="Decision screen showing strategic choices" />
-        </div>
-      </section>
-
-      <section className="project-section results">
-        <h2>Impact & Results</h2>
-        <p>
-          <em>Conquest</em> received strong feedback for its immersive storytelling and creative logic-based structure.
-          It stood out as a unique spin on traditional war-themed games by emphasizing brains over brawn.
-          Players praised its replayability and ability to make them think critically. It was successfully showcased
-          in my digital portfolio, drawing attention from peers and instructors alike.
-        </p>
-      </section>
-
-      <section className="project-section reflection">
-        <h2>Reflection</h2>
-        <p>
-          This project deepened my understanding of decision trees, conditional logic, and game flow architecture.
-          More importantly, it taught me how to design for user engagement through story and interactivity rather than
-          complexity. If expanded, I’d consider implementing a visual UI, adding real-time decision consequences,
-          and introducing an AI-based opponent for dynamic challenges.
-        </p>
-      </section>
-    </div>
+    <ProjectShell>
+      <ProjectCaseStudy
+        title="Conquest Strategy Game"
+        summary="A browser-based decision game where branching choices shape the outcome of a fictional conflict."
+        tech={['JavaScript', 'HTML', 'CSS', 'Decision Trees', 'Interactive Storytelling']}
+        heroImage="/conquest-banner.png"
+        heroAlt="Conquest game banner"
+        snapshot={[
+          { label: 'Role', value: 'Game logic + UI' },
+          { label: 'Timeline', value: 'School game project' },
+          { label: 'Focus', value: 'Branching decisions' },
+          { label: 'Output', value: 'Playable web game' },
+        ]}
+        overview="Conquest places the player in charge of a fictional state navigating strategic decisions during a tense conflict. The player chooses a leadership style, makes scenario-based decisions, and earns victory points based on logic, risk, and consequence."
+        problem="The challenge was to make a lightweight text-driven game feel strategic without overcomplicating the interface or codebase. Every decision needed to feel distinct, understandable, and replayable."
+        approach={[
+          'Built a branching narrative flow around leadership styles such as diplomatic, warlike, cunning, and humble.',
+          'Designed a point-based win condition that rewards successful decisions across multiple scenarios.',
+          'Created custom screens for introduction, decision-making, and player feedback.',
+          'Kept the game browser-compatible with plain JavaScript, HTML, and CSS.',
+        ]}
+        technical={[
+          'Decision paths are handled through conditional logic and state variables that track player choices.',
+          'The victory system uses accumulated points to determine progress and end-state outcomes.',
+          'Reusable UI sections support player setup, scenario presentation, and consequence feedback.',
+          'The design balances simple implementation with enough branching structure to encourage replayability.',
+        ]}
+        images={[
+          { src: '/conquestintro.png', alt: 'Conquest intro screen', caption: 'Intro and setup screen.' },
+          { src: '/conquestdecision.png', alt: 'Conquest decision screen', caption: 'Decision screen with strategic choices.' },
+        ]}
+        outcome="The project taught me how to structure game flow, decision trees, and user feedback. It also helped me think more carefully about how interaction design can make simple logic feel engaging."
+        links={[
+          { label: 'Play the Game', href: 'https://sites.google.com/view/arshmobeensgamesite' },
+        ]}
+      />
+    </ProjectShell>
   );
 }

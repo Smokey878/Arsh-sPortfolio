@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import '../styles/MainWebsite.css';
 import BeyondSection from './BeyondSection';
-import { useEffect } from 'react';
 
 
 function ParticleBackground() {
@@ -341,9 +340,83 @@ const experienceCardVariants = {
   }),
 };
 
+const projectItems = [
+  {
+    href: '/projects/plant-watering',
+    image: './plant-watering1.png',
+    title: 'Autonomous Plant Watering System',
+    description: 'Accessible irrigation cart designed for independent garden watering.',
+    tech: 'Python, GPIO, Raspberry Pi, IoT',
+    cta: 'View case study',
+  },
+  {
+    href: '/projects/portfolio',
+    image: './portfolio.png',
+    title: 'Personal Portfolio Website',
+    description: 'Custom React portfolio with motion, responsive layouts, and dark UI.',
+    tech: 'React, JavaScript, CSS, Framer Motion',
+    cta: 'View build',
+  },
+  {
+    href: '/projects/AbyssGPT',
+    image: './abyss-gpt.png',
+    title: 'AbyssGPT',
+    description: 'Deep-sea exploration assistant with mapping and risk-aware routing.',
+    tech: 'Python, Streamlit, Plotly, NLP, NetworkX',
+    cta: 'View prototype',
+  },
+  {
+    href: '/projects/SpriteAdventureGame',
+    image: './sprite-adventure.png',
+    title: 'Untitled Sprite Adventure RPG',
+    description: 'Pixel-art adventure game with exploration, combat, and puzzles.',
+    tech: 'Unity, C#, Tilemaps, Sprite Animation',
+    cta: 'In development',
+  },
+  {
+    href: '/projects/PCBuild',
+    image: './pcbuild.png',
+    title: 'Custom PC Build',
+    description: 'High-performance workstation tuned for development and rendering.',
+    tech: 'RTX 3070, Ryzen 5800X, 32GB RAM',
+    cta: 'View build',
+  },
+  {
+    href: '/projects/ConquestGame',
+    image: './conquest-banner.png',
+    title: 'Conquest Strategy Game',
+    description: 'Choice-driven strategy game shaped by branching decisions.',
+    tech: 'JavaScript, HTML, CSS',
+    cta: 'View game',
+  },
+  {
+    href: '/projects/ArtifactOfSalvation',
+    image: './artifactbanner.png',
+    title: 'Artifact of Salvation',
+    description: '3D stealth-action RPG with puzzles, combat, and story progression.',
+    tech: 'Unity, C#, Blender, Photoshop',
+    cta: 'View project',
+  },
+  {
+    href: '/projects/FloodTrafficAI',
+    image: './flood-sensor.png',
+    title: 'Flood-Responsive Traffic Light',
+    description: 'Arduino signal system that detects flooding and redirects traffic.',
+    tech: 'Arduino, C++, Sensors, LED Matrix',
+    cta: 'View system',
+  },
+  {
+    href: '/projects/CarBuild',
+    image: './bmw.jpg',
+    title: 'Custom BMW F30 Build',
+    description: 'Performance and aesthetic build with tuning and hardware upgrades.',
+    tech: 'ECU Tune, Intercooler, Intake, Body Kit',
+    cta: 'View build',
+  },
+];
+
 
 export default function MainWebsite() {
-  const [aboutTab, setAboutTab] = useState('experience');
   const [aboutTab, setAboutTab] = useState('education');
   const [isCompactTimeline, setIsCompactTimeline] = useState(false);
   const shouldReduceMotion = useReducedMotion();
@@ -387,7 +460,6 @@ useEffect(() => {
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#workshops">Workshops & Research</a></li>
         <li><a href="#beyond">Beyond Engineering</a></li>
         <li><a href="#contact">Contact</a></li>
       
@@ -591,8 +663,8 @@ useEffect(() => {
 <div className="skill-category">
 <h3>Mechanical, Robotics & Hardware</h3>
 <ul>
-<li><img src="/autocad-logo.png" className="skill-icon" /> AutoCAD</li>
-<li><img src="/solidworks-logo.png" className="skill-icon" /> SolidWorks</li>
+<li><img src="/autocad-logo.png" alt="AutoCAD" className="skill-icon" /> AutoCAD</li>
+<li><img src="/solidworks-logo.png" alt="SolidWorks" className="skill-icon" /> SolidWorks</li>
 <li><i className="devicon-matlab-plain colored"></i> MATLAB</li>
 <li><i className="devicon-matlab-plain colored"></i> Simulink</li>
 <li><i className="devicon-vscode-plain colored"></i> Intel Quartus</li>
@@ -634,7 +706,7 @@ useEffect(() => {
 <li><i className="devicon-jira-plain colored"></i> Jira</li>
 <li><i className="devicon-docker-plain colored"></i> Microservices</li>
 <li><i className="devicon-git-plain colored"></i> CI/CD</li>
-<li><img src="/notion-logo.png" className="skill-icon" /> Notion</li>
+<li><img src="/notion-logo.png" alt="Notion" className="skill-icon" /> Notion</li>
 <li><i className="devicon-slack-plain colored"></i> Slack</li>
 </ul>
 </div>
@@ -687,187 +759,27 @@ useEffect(() => {
   <h2 className="section-title">Projects</h2>
 
   <div className="projects-grid">
-    {/* Project 1 */}
-    <a href="/projects/plant-watering" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./plant-watering1.png')" }}
-        />
-        <div className="project-content">
-          <h3>Autonomous Plant Watering System</h3>
-          <p>
-            Designed an accessible, portable irrigation solution using a mechanically powered
-            cart that empowers differently abled volunteers to water garden beds independently.
-          </p>
-          <p className="tech">Tech: Python, GPIO, Raspberry Pi, IoT</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
-
-    {/* Project 2 */}
-    <a href="/projects/portfolio" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./portfolio.png')" }}
-        />
-        <div className="project-content">
-          <h3>Personal Portfolio Website</h3>
-          <p>
-            My fully custom-built personal website, showcasing my projects, experience,
-            and personal brand with smooth animations, modern UI, and responsive design.
-          </p>
-          <p className="tech">Tech: React, JavaScript, CSS3, HTML5, Framer Motion</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
-
-    {/* Project 3 */}
-    <a href="/projects/AbyssGPT" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./abyss-gpt.png')" }}
-    />
-    <div className="project-content">
-      <h3>AbyssGPT</h3>
-      <p>
-        Hackathon-built intelligent exploration assistant for deep-sea scientists,
-        combining natural language querying, pathfinding, environmental risk scoring,
-        and interactive mapping to support safe and sustainable submarine exploration.
-      </p>
-
-      <p className="tech">
-        Tech: Python, Streamlit, Plotly, Pandas, NetworkX, NLP, A* Pathfinding
-      </p>
-
-      <span className="hover-overlay">
-        → Click to see more
-      </span>
-    </div>
-  </div>
-</a>
-{/*Project 4*/}
-<a href="/projects/SpriteAdventureGame" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./sprite-adventure.png')" }}
-    />
-    <div className="project-content">
-      <h3>Untitled Sprite Adventure RPG</h3>
-
-      <p>
-        Currently developing a 2D pixel-art adventure game featuring exploration,
-        environmental puzzles, combat systems, NPC interaction, and custom sprite-based
-        worldbuilding inspired by classic action RPGs.
-      </p>
-
-      <p className="tech">
-        Tech: Unity, C#, Tilemaps, Sprite Animation, Gameplay Systems
-      </p>
-
-      <span className="hover-overlay">
-        → In Development
-      </span>
-    </div>
-  </div>
-</a>
-
-    {/* Project 5 */}
-    <a href="/projects/PCBuild" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./pcbuild.png')" }}
-        />
-        <div className="project-content">
-          <h3>Custom PC Build</h3>
-          <p>
-            Built a high-performance PC for development, gaming, and rendering tasks.
-          </p>
-          <p className="tech">Tech: RTX 3070, Ryzen 5800X, 32GB RAM</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
-
-    {/* Project 6 */}
-    <a href="/projects/ConquestGame" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./conquest-banner.png')" }}
-        />
-        <div className="project-content">
-          <h3>Conquest Strategy Game</h3>
-          <p>
-            Text-based decision game where player choices shape the fate of warring nations.
-          </p>
-          <p className="tech">Tech: JavaScript, HTML, CSS</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
-
-    {/* Project 7 */}
-    <a href="/projects/ArtifactOfSalvation" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./artifactbanner.png')" }}
-        />
-        <div className="project-content">
-          <h3>Artifact of Salvation</h3>
-          <p>
-            3D stealth-action RPG where an archaeologist races to retrieve a relic
-            before a greedy villain.
-          </p>
-          <p className="tech">Tech: Unity, C#, Blender, Photoshop</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
-
-    {/* Project 8 */}
-    <a href="/projects/FloodTrafficAI" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./flood-sensor.png')" }}
-        />
-        <div className="project-content">
-          <h3>Flood-Responsive Traffic Light System</h3>
-          <p>
-            AI-integrated Arduino stoplight that detects flooding and redirects traffic to safety.
-          </p>
-          <p className="tech">Tech: Arduino, C++, AI Logic, Water Sensors, LED Matrix</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
-
-    {/* Project 9 */}
-    <a href="/projects/CarBuild" className="project-link">
-      <div className="project-card">
-        <div
-          className="project-image"
-          style={{ backgroundImage: "url('./bmw.jpg')" }}
-        />
-        <div className="project-content">
-          <h3>Custom BMW F30 Build</h3>
-          <p>
-            A self-tuned BMW 3 Series F30 featuring a full body kit, upgraded intercooler,
-            performance air intake, and ambient starlight roof.
-          </p>
-          <p className="tech">Mods: ECU Tune, Front Lip, Rear Diffuser, Intercooler, Cold Air Intake, Starlights</p>
-          <span className="hover-overlay">→ Click to see more</span>
-        </div>
-      </div>
-    </a>
+    {projectItems.map((project) => (
+      <a href={project.href} className="project-link" key={project.title}>
+        <article className="project-card">
+          <div
+            className="project-image"
+            style={{ backgroundImage: `url('${project.image}')` }}
+          >
+            <span className="project-image-overlay">{project.cta}</span>
+          </div>
+          <div className="project-content">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <p className="tech">Tech: {project.tech}</p>
+            <span className="hover-overlay">
+              {project.cta}
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </article>
+      </a>
+    ))}
   </div>
 </section>
 
