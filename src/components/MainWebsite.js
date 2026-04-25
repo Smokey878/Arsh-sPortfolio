@@ -1,13 +1,349 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import '../styles/MainWebsite.css';
 import BeyondSection from './BeyondSection';
-import GallerySection from './GallerySection';
-import { useEffect } from 'react';
 
+function ParticleBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    const comet = [];
+    const sparks = [];
+    let animationFrame;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let lastSparkAt = 0;
+    const cursor = {
+      x: width / 2,
+      y: height / 2,
+      lastX: width / 2,
+      lastY: height / 2,
+      speed: 0,
+      lastSpeed: 0,
+      active: false,
+    };
+
+    const particleCount = () =>
+      Math.min(72, Math.max(44, Math.floor((width * height) / 18000)));
+
+    const createParticle = () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      size: Math.random() * 1.6 + 0.6,
+      alpha: Math.random() * 0.35 + 0.18,
+      phase: Math.random() * Math.PI * 2,
+    });
+
+    const createCometParticle = (index) => ({
+      x: cursor.x,
+      y: cursor.y,
+      vx: 0,
+      vy: 0,
+      size: 3.2 - index * 0.12,
+      index,
+    });
+
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      particles.length = 0;
+      for (let i = 0; i < particleCount(); i += 1) {
+        particles.push(createParticle());
+      }
+
+      comet.length = 0;
+      for (let i = 0; i < 14; i += 1) {
+        comet.push(createCometParticle(i));
+      }
+    };
+
+    const handlePointerMove = (event) => {
+      const dx = event.clientX - cursor.x;
+      const dy = event.clientY - cursor.y;
+      const nextSpeed = Math.hypot(dx, dy);
+      const acceleration = nextSpeed - cursor.speed;
+
+      const now = performance.now();
+      cursor.lastX = cursor.x;
+      cursor.lastY = cursor.y;
+      cursor.x = event.clientX;
+      cursor.y = event.clientY;
+      cursor.lastSpeed = cursor.speed;
+      cursor.speed = nextSpeed;
+      cursor.active = true;
+
+      if (acceleration > 18 && now - lastSparkAt > 80) {
+        const sparkCount = Math.random() > 0.55 ? 2 : 1;
+
+        for (let i = 0; i < sparkCount; i += 1) {
+          const angle = Math.atan2(dy, dx) + Math.PI + (Math.random() - 0.5) * 1.2;
+          const velocity = Math.random() * 1.8 + 1.2;
+
+          sparks.push({
+            x: cursor.x,
+            y: cursor.y,
+            vx: Math.cos(angle) * velocity,
+            vy: Math.sin(angle) * velocity,
+            life: 1,
+            size: Math.random() * 1.2 + 0.5,
+          });
+        }
+
+        lastSparkAt = now;
+      }
+    };
+
+    const handlePointerLeave = () => {
+      cursor.active = false;
+      cursor.speed = 0;
+    };
+
+    const animate = (time) => {
+      ctx.clearRect(0, 0, width, height);
+      cursor.speed *= 0.92;
+      const visibleCometLength = cursor.active
+        ? Math.min(14, Math.max(8, Math.floor(8 + cursor.speed / 7)))
+        : 0;
+
+      for (let i = 0; i < comet.length; i += 1) {
+        const c = comet[i];
+        const leader = i === 0 ? cursor : comet[i - 1];
+        const lag = 0.16 - Math.min(i * 0.006, 0.07);
+        const pull = i === 0 ? 0.28 : lag;
+
+        c.vx += (leader.x - c.x) * pull;
+        c.vy += (leader.y - c.y) * pull;
+        c.vx *= 0.62;
+        c.vy *= 0.62;
+        c.x += c.vx;
+        c.y += c.vy;
+      }
+
+      for (let i = 0; i < particles.length; i += 1) {
+        const p = particles[i];
+        const driftX = Math.cos(time * 0.00025 + p.phase) * 0.045;
+        const driftY = Math.sin(time * 0.00022 + p.phase) * 0.045;
+
+        for (let j = 0; j < visibleCometLength; j += 1) {
+          const c = comet[j];
+          const dx = p.x - c.x;
+          const dy = p.y - c.y;
+          const distance = Math.hypot(dx, dy);
+
+          if (distance < 90 && distance > 0.01) {
+            const force = (1 - distance / 90) * 0.035 * (1 - j / comet.length);
+            p.vx += (dx / distance) * force;
+            p.vy += (dy / distance) * force;
+          }
+        }
+
+        p.vx *= 0.965;
+        p.vy *= 0.965;
+        p.x += p.vx + driftX;
+        p.y += p.vy + driftY;
+
+        if (p.x < -20) p.x = width + 20;
+        if (p.x > width + 20) p.x = -20;
+        if (p.y < -20) p.y = height + 20;
+        if (p.y > height + 20) p.y = -20;
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(190, 184, 255, ${p.alpha})`;
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      for (let i = 0; i < particles.length; i += 1) {
+        for (let j = i + 1; j < particles.length; j += 1) {
+          const a = particles[i];
+          const b = particles[j];
+          const distance = Math.hypot(a.x - b.x, a.y - b.y);
+
+          if (distance < 115 && Math.random() > 0.58) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(126, 214, 255, ${(1 - distance / 115) * 0.08})`;
+            ctx.lineWidth = 0.7;
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (let i = visibleCometLength - 1; i >= 0; i -= 1) {
+        const c = comet[i];
+        const fade = 1 - i / visibleCometLength;
+        const speedGlow = Math.min(cursor.speed / 80, 1);
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(170, 160, 255, ${0.035 + fade * 0.12 + speedGlow * 0.04})`;
+        ctx.arc(c.x, c.y, Math.max(0.8, c.size * fade), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      for (let i = sparks.length - 1; i >= 0; i -= 1) {
+        const spark = sparks[i];
+        spark.life -= 0.055;
+        spark.x += spark.vx;
+        spark.y += spark.vy;
+        spark.vx *= 0.94;
+        spark.vy *= 0.94;
+
+        if (spark.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(126, 214, 255, ${spark.life * 0.22})`;
+        ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerleave', handlePointerLeave);
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerleave', handlePointerLeave);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="particle-background" aria-hidden="true" />;
+}
+
+const experienceItems = [
+  {
+    role: 'HR Technologist Intern',
+    organization: 'i3 Institute',
+    location: 'Mississauga, ON',
+    date: 'June 2025 - October 2025',
+    description:
+      'At i3 Institute, I built internal automation tooling that turned repetitive HR and operations tasks into cleaner, more reliable digital workflows. The work centered on Python and JavaScript automation, a React and FastAPI internal dashboard, and onboarding tracking systems that made team processes easier to monitor, update, and trust.',
+    highlights: [
+      'Built automation flows that reduced manual handoffs across onboarding and internal data workflows.',
+      'Developed dashboard features for tracking onboarding progress and surfacing process bottlenecks.',
+      'Improved data reliability by tightening validation paths and standardizing internal tool behavior.',
+    ],
+    tags: ['Python', 'React', 'FastAPI', 'Automation', 'Internal Tools'],
+  },
+  {
+    role: 'Software Engineering Intern',
+    organization: 'Elite Life Financial',
+    location: 'Mississauga, ON',
+    date: 'April 2024 - August 2024',
+    description:
+      'At Elite Life Financial, I worked on backend-oriented workflow automation and data processing tools that helped internal teams catch errors earlier and move information through operational pipelines more consistently. The experience felt like practical data engineering: validating inputs, automating repetitive checks, and building scripts that made internal processes less fragile.',
+    highlights: [
+      'Created Python validation tooling for cleaner, more consistent data processing.',
+      'Built automation scripts that reduced repetitive manual review steps.',
+      'Supported internal process tooling with JavaScript and backend workflow improvements.',
+    ],
+    tags: ['Python', 'Automation', 'Data Engineering', 'JavaScript', 'Backend'],
+  },
+  {
+    role: 'Automotive Systems & Software Specialist',
+    organization: 'Pro Color Collision',
+    location: 'Burlington, ON',
+    date: 'June 2023 - September 2023',
+    description:
+      'At Pro Color Collision, I worked at the intersection of automotive operations and software-driven process visibility. I helped digitize repair workflows with job tracking logic, delay alerts, and parts-shortage notifications that made day-to-day coordination more transparent across a fast-moving service environment.',
+    highlights: [
+      'Built a Python job tracking tool to improve visibility across active repair workflows.',
+      'Created automated alerts for delay risks and parts availability issues.',
+      'Connected automotive diagnostics thinking with practical operations tooling.',
+    ],
+    tags: ['Automotive Systems', 'Python', 'Workflow Systems', 'Operations', 'Diagnostics'],
+  },
+  {
+    role: 'Electronic Design Engineer',
+    organization: 'Western Formula Racing',
+    location: 'London, ON',
+    date: 'September 2024 - April 2025',
+    description:
+      'At Western Formula Racing, I contributed to motorsport electronics systems that supported sensor integration, telemetry, and data acquisition for a Formula-style EV platform. My work connected embedded hardware with real-time diagnostics and analysis workflows used to understand vehicle behavior during testing.',
+    highlights: [
+      'Integrated sensor systems for telemetry and real-time vehicle diagnostics.',
+      'Supported microcontroller-based data logging for track-side and post-run analysis.',
+      'Contributed to data acquisition workflows used for engineering feedback loops.',
+    ],
+    tags: ['Embedded', 'Telemetry', 'Sensors', 'Data Acquisition', 'Motorsport'],
+  },
+  {
+    role: 'Strategic Partnerships & Engagement Associate',
+    organization: 'Amity Global Foundation',
+    location: 'Oakville, ON',
+    date: 'May 2024 - August 2024',
+    description:
+      'At Amity Global Foundation, I approached partnership development like a discovery and solution-design problem: identifying stakeholder needs, organizing outreach data, and supporting a partnership pipeline with clearer prioritization. The role strengthened how I translate ambiguity into structured, actionable strategy.',
+    highlights: [
+      'Mapped stakeholder priorities to support more targeted outreach and engagement.',
+      'Used data-informed thinking to organize partnership pipeline opportunities.',
+      'Helped shape solution-oriented communication for community and organizational partners.',
+    ],
+    tags: ['Strategy', 'Analytics', 'Partnerships', 'Stakeholder Engagement'],
+  },
+];
+
+const experienceCardVariants = {
+  hiddenLeft: {
+    opacity: 0,
+    x: -180,
+    y: 40,
+  },
+  hiddenRight: {
+    opacity: 0,
+    x: 180,
+    y: 40,
+  },
+  hiddenMobile: {
+    opacity: 0,
+    x: 0,
+    y: 48,
+  },
+  reduced: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+  },
+  visible: (index = 0) => ({
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.85,
+      delay: index * 0.08,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
 
 
 export default function MainWebsite() {
   const [aboutTab, setAboutTab] = useState('education');
+  const [isCompactTimeline, setIsCompactTimeline] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 useEffect(() => {
   const hash = window.location.hash;
   if (hash) {
@@ -21,9 +357,22 @@ useEffect(() => {
   }
 }, []);
 
+useEffect(() => {
+  const timelineQuery = window.matchMedia('(max-width: 820px)');
+  const updateTimelineMode = () => setIsCompactTimeline(timelineQuery.matches);
+
+  updateTimelineMode();
+  timelineQuery.addEventListener('change', updateTimelineMode);
+
+  return () => timelineQuery.removeEventListener('change', updateTimelineMode);
+}, []);
+
 
   return (
-    <div>
+ <div
+  className="main-website"
+>
+  <ParticleBackground />
   <div className="fade-in">
       {/*Top Navigation*/}
       <nav className="top-nav">
@@ -32,12 +381,11 @@ useEffect(() => {
       </div>
         <ul className="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#initiatives">Initiatives & Ventures</a></li>
         <li><a href="#workshops">Workshops & Research</a></li>
         <li><a href="#beyond">Beyond Engineering</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       
         
@@ -63,7 +411,7 @@ useEffect(() => {
             </a>
           </div>
         </section>
-        <div class="clear-fix"></div>
+        <div className="clear-fix"></div>
 
         {/*About Me Section*/}
 <section className="about" id="about">
@@ -88,35 +436,56 @@ useEffect(() => {
           Education
         </button>
         <button
-          className={aboutTab === 'experience' ? 'active' : ''}
-          onClick={() => setAboutTab('experience')}
+          className={aboutTab === 'certifications' ? 'active' : ''}
+          onClick={() => setAboutTab('certifications')}
         >
-          Experience
+          Certifications
         </button>
       </div>
 
-      <div className="about-info">
-        {aboutTab === 'education' ? (
+ <div className="about-info">
+  {aboutTab === 'education' ? (
+    <div>
+
+      <h3>Western University</h3>
+      <p>
+        <strong>B.E.Sc. in Software Engineering (2023 – 2027)</strong>
+      </p>
+      <p>
+        Exploring systems and innovation through courses in Algorithms,
+        Data Structures, Software Design, Embedded Systems,
+        Digital Logic, and Object-Oriented Development.
+      </p>
+      
+      <h3>White Oaks Secondary School</h3>
+      <p>
+        <strong>
+          International Baccalaureate Diploma Programme | IB Score: 40/45
+        </strong>
+      </p>
+      <p>
+        Developed a strong foundation in analytical thinking, research,
+        mathematics, and interdisciplinary problem solving through the
+        International Baccalaureate curriculum.
+      </p>
+
+      <br />
+
+
+    </div>
+        ) : aboutTab === 'certifications' ? (
           <div>
-            <h3>Western University</h3>
-            <p><strong>B.E.Sc. in Software Engineering (2023 – 2027)</strong></p>
-            <p>
-              Exploring systems and innovation through courses in Algorithms, Data Structures,
-              Software Design, Embedded Systems, Digital Logic, and Object-Oriented Development.
-            </p>
+            <h3>Certifications</h3>
+            <p><strong>Professional & Safety Training</strong></p>
+            <ul className="certification-list">
+              <li>First Aid & CPR/C</li>
+              <li>SafeTalk</li>
+              <li>WHMIS Training</li>
+              <li>AODA</li>
+              <li>The Founder&apos;s Journey Certification</li>
+            </ul>
           </div>
-        ) : (
-          <div>
-            <h3>Western Formula Racing — Electronics Design Engineer</h3>
-            <p>
-              Engineered embedded systems for real-time vehicle telemetry, sensor calibration, and power distribution across a competitive EV platform.
-            </p>
-            <h3>Engineering Society — Event Organizer</h3>
-            <p>
-              Led 100+ student events, technical workshops, and hardware hackathons focused on practical innovation and collaborative learning.
-            </p>
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
 
@@ -126,331 +495,383 @@ useEffect(() => {
   </div>
 </section>
 
+<section className="experience" id="experience">
+  <h2 className="section-title">Experience</h2>
 
-<section className="skills" id="skills">
-  <h2>Skills</h2>
-  <div className="skills-container">
-  <div className="skill-category">
-  <h3>Languages</h3>
-  <ul>
-    <li><i className="devicon-python-plain colored"></i> Python (FastAPI)</li>
-    <li><i className="devicon-java-plain colored"></i> Java</li>
-    <li><i className="devicon-cplusplus-plain colored"></i> C++</li>
-    <li><i className="devicon-javascript-plain colored"></i> JavaScript</li>
-    <li><i className="devicon-typescript-plain colored"></i> TypeScript</li>
-    <li><i className="devicon-csharp-plain colored"></i> C#</li>
-  </ul>
-</div>
+  <div className="experience-timeline">
+    {experienceItems.map((item, index) => {
+      const isLeft = index % 2 === 0;
 
-
-    <div className="skill-category">
-      <h3>Web & Frameworks</h3>
-      <ul>
-        <li><i className="devicon-react-original colored"></i> React</li>
-        <li><i className="devicon-nodejs-plain colored"></i> Node.js</li>
-        <li><i className="devicon-html5-plain colored"></i> HTML</li>
-        <li><i className="devicon-css3-plain colored"></i> CSS</li>
-        <li><i className="devicon-chrome-plain colored"></i> Frontend & Backend Development</li>
-        <li><i className="devicon-amazonwebservices-original colored"></i> Amazon Web Services</li>
-        <li><i className="devicon-docker-plain colored"></i> Docker</li>
-        <li><i className="devicon-kubernetes-plain colored"></i> Kubernetes</li>
-      </ul>
-    </div>
-
-    <div className="skill-category">
-      <h3>Mechanical & Hardware Design</h3>
-      <ul>
-        <li>
-        <img src="/autocad-logo.png" alt="AutoCAD" className="skill-icon" />
-          AutoCAD
-        </li>
-        <li>
-        <img src="/solidworks-logo.png" alt="SolidWorks" className="skill-icon" />
-          SolidWorks
-        </li>
-        <li><i className="devicon-matlab-plain colored"></i> Simulink</li>
-        <li><i className="devicon-vscode-plain colored"></i> Intel Quartus</li>
-        <li><i className="devicon-matlab-plain colored"></i> MATLAB</li>
-        <li><i className="devicon-postgresql-plain colored"></i> PostgreSQL</li>
-        <li><i className="devicon-redis-plain colored"></i> Redis</li>
-        <li><i className="devicon-ubuntu-plain colored"></i> Gazebo</li>
-        <li><i className="devicon-linux-plain colored"></i> PX4</li>
-        <li><i className="devicon-python-plain colored"></i> ROS 2</li>
-      </ul>
-    </div>
-
-    <div className="skill-category">
-      <h3>Development Workflow</h3>
-      <ul>
-        <li><i className="devicon-jira-plain colored"></i> Agile Development</li>
-        <li><i className="devicon-git-plain colored"></i> Iterative Development</li>
-        <li><i className="devicon-docker-plain colored"></i> Microservices Architecture</li>
-        <li><i className="devicon-git-plain colored"></i> Git</li>
-        <li><i className="devicon-gitlab-plain colored"></i> GitLab</li>
-        <li><i className="devicon-github-original colored"></i> GitHub</li>
-        <li><i className="devicon-jira-plain colored"></i> Jira</li>
-        <li>
-        <img src="/notion-logo.png" alt="Notion" className="skill-icon" />
-          Notion
-        </li>
-        <li><i className="devicon-slack-plain colored"></i> Slack</li>
-      </ul>
-    </div>
-
-    <div className="skill-category">
-      <h3>Cloud & Tools</h3>
-      <ul>
-        <li><i className="devicon-amazonwebservices-original colored"></i> AWS</li>
-        <li><i className="devicon-google-plain colored"></i> Amplitude</li>
-        <li><i className="devicon-pytest-plain colored"></i> Experimentation Frameworks</li>
-        <li><i className="devicon-python-plain colored"></i> Data Analytics</li>
-        <li><i className="devicon-markdown-original"></i> UML Diagrams</li>
-      </ul>
-    </div>
-
-    <div className="skill-category">
-      <h3>Office Suite</h3>
-      <ul>
-      <li>
-        <img src="/word-logo.png" alt="Word" className="skill-icon" />
-          Word
-        </li>
-        <li>
-        <img src="/excel-logo.png" alt="Excel" className="skill-icon" />
-          Excel
-        </li>
-        <li>
-        <img src="/powerpoint-logo.png" alt="PowerPoint" className="skill-icon" />
-          PowerPoint
-        </li>
-        <li>
-        <img src="/sharepoint-logo.png" alt="Sharepoint" className="skill-icon" />
-          Sharepoint
-        </li>
-        <li>
-        <img src="/teams-logo.png" alt="Teams" className="skill-icon" />
-          Teams
-        </li>
-        <li>
-        <img src="/onenote-logo.png" alt="Onenote" className="skill-icon" />
-          Onenote
-        </li>
-      </ul>
-    </div>
-
-    <div className="skill-category">
-      <h3>Embedded & Automotive Systems</h3>
-      <ul>
-        <li><i className="devicon-arduino-plain colored"></i> Arduino</li>
-        <li><i className="devicon-raspberrypi-line colored"></i> Raspberry Pi</li>
-        <li><i className="devicon-embeddedc-plain colored"></i> CAN Bus Protocol</li>
-        <li><i className="devicon-embeddedc-plain colored"></i> Sensor Integration</li>
-        <li><i className="devicon-embeddedc-plain colored"></i> Motor Control Systems</li>
-        <li><i className="devicon-embeddedc-plain colored"></i> Power Electronics Basics</li>
-      </ul>
-    </div>
-
-
-
+      return (
+        <motion.article
+          key={`${item.organization}-${item.role}`}
+          className={`experience-card ${isLeft ? 'left' : 'right'}`}
+          variants={experienceCardVariants}
+          custom={index}
+          initial={
+            shouldReduceMotion
+              ? 'reduced'
+              : isCompactTimeline
+                ? 'hiddenMobile'
+                : isLeft
+                  ? 'hiddenLeft'
+                  : 'hiddenRight'
+          }
+          whileInView={shouldReduceMotion ? 'reduced' : 'visible'}
+          viewport={{ once: false, amount: 0.25 }}
+        >
+          <div className="experience-card-inner">
+            <div className="experience-meta">
+              <span>{item.date}</span>
+            </div>
+            <h3>{item.role}</h3>
+            <p className="experience-organization">{item.organization}</p>
+            <p className="experience-location">{item.location}</p>
+            <p className="experience-description">{item.description}</p>
+            <div className="experience-achievements" aria-label="Impact highlights">
+              {item.highlights.map((highlight) => (
+                <p key={highlight}>{highlight}</p>
+              ))}
+            </div>
+            <div className="experience-tags">
+              {item.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </motion.article>
+      );
+    })}
   </div>
 </section>
 
+
+<section className="skills" id="skills">
+<h2>Skills</h2>
+
+<div className="skills-container">
+
+{/* LANGUAGES */}
+<div className="skill-category">
+<h3>Languages</h3>
+<ul>
+<li><i className="devicon-python-plain colored"></i> Python</li>
+<li><i className="devicon-java-plain colored"></i> Java</li>
+<li><i className="devicon-cplusplus-plain colored"></i> C++</li>
+<li><i className="devicon-javascript-plain colored"></i> JavaScript</li>
+<li><i className="devicon-typescript-plain colored"></i> TypeScript</li>
+<li><i className="devicon-csharp-plain colored"></i> C#</li>
+<li><i className="devicon-c-plain colored"></i> Embedded C</li>
+</ul>
+</div>
+
+
+{/* WEB */}
+<div className="skill-category">
+<h3>Web & Frameworks</h3>
+<ul>
+<li><i className="devicon-react-original colored"></i> React</li>
+<li><i className="devicon-nodejs-plain colored"></i> Node.js</li>
+<li><i className="devicon-html5-plain colored"></i> HTML</li>
+<li><i className="devicon-css3-plain colored"></i> CSS</li>
+<li><i className="devicon-chrome-plain colored"></i> Frontend & Backend</li>
+<li><i className="devicon-amazonwebservices-original colored"></i> AWS</li>
+<li><i className="devicon-docker-plain colored"></i> Docker</li>
+<li><i className="devicon-kubernetes-plain colored"></i> Kubernetes</li>
+<li><i className="devicon-fastapi-plain colored"></i> REST APIs</li>
+<li><i className="devicon-postgresql-plain colored"></i> SQL</li>
+</ul>
+</div>
+
+
+{/* MECHANICAL / ROBOTICS */}
+<div className="skill-category">
+<h3>Mechanical, Robotics & Hardware</h3>
+<ul>
+<li><img src="/autocad-logo.png" className="skill-icon" /> AutoCAD</li>
+<li><img src="/solidworks-logo.png" className="skill-icon" /> SolidWorks</li>
+<li><i className="devicon-matlab-plain colored"></i> MATLAB</li>
+<li><i className="devicon-matlab-plain colored"></i> Simulink</li>
+<li><i className="devicon-vscode-plain colored"></i> Intel Quartus</li>
+<li><i className="devicon-linux-plain colored"></i> Intel FPGA</li>
+<li><i className="devicon-ubuntu-plain colored"></i> Gazebo</li>
+<li><i className="devicon-linux-plain colored"></i> PX4</li>
+<li><i className="devicon-python-plain colored"></i> ROS 2</li>
+<li><i className="devicon-linux-plain colored"></i> System Modeling</li>
+</ul>
+</div>
+
+
+{/* AI */}
+<div className="skill-category">
+<h3>AI & Intelligent Systems</h3>
+<ul>
+<li><i className="devicon-python-plain colored"></i> Machine Learning</li>
+<li><i className="devicon-opencv-plain colored"></i> Computer Vision</li>
+<li><i className="devicon-tensorflow-original colored"></i> Neural Networks</li>
+<li><i className="devicon-opencv-plain colored"></i> OpenCV</li>
+<li><i className="devicon-tensorflow-original colored"></i> TensorFlow</li>
+<li><i className="devicon-pytorch-original colored"></i> PyTorch</li>
+<li><i className="devicon-cplusplus-plain colored"></i> Sensor Fusion</li>
+<li><i className="devicon-linux-plain colored"></i> Path Planning</li>
+<li><i className="devicon-python-plain colored"></i> ROS Perception</li>
+<li><i className="devicon-python-plain colored"></i> Data Visualization</li>
+</ul>
+</div>
+
+
+{/* DEVELOPMENT */}
+<div className="skill-category">
+<h3>Development Workflow</h3>
+<ul>
+<li><i className="devicon-jira-plain colored"></i> Agile Development</li>
+<li><i className="devicon-git-plain colored"></i> Git</li>
+<li><i className="devicon-gitlab-plain colored"></i> GitLab</li>
+<li><i className="devicon-github-original colored"></i> GitHub</li>
+<li><i className="devicon-jira-plain colored"></i> Jira</li>
+<li><i className="devicon-docker-plain colored"></i> Microservices</li>
+<li><i className="devicon-git-plain colored"></i> CI/CD</li>
+<li><img src="/notion-logo.png" className="skill-icon" /> Notion</li>
+<li><i className="devicon-slack-plain colored"></i> Slack</li>
+</ul>
+</div>
+
+
+{/* EMBEDDED */}
+<div className="skill-category">
+<h3>Embedded & Automotive Systems</h3>
+<ul>
+<li><i className="devicon-arduino-plain colored"></i> Arduino</li>
+<li><i className="devicon-raspberrypi-line colored"></i> Raspberry Pi</li>
+<li><i className="devicon-c-plain colored"></i> CAN Bus Communication</li>
+<li><i className="devicon-c-plain colored"></i> Sensor Integration</li>
+<li><i className="devicon-c-plain colored"></i> Motor Control</li>
+<li><i className="devicon-c-plain colored"></i> RTOS Basics</li>
+<li><i className="devicon-c-plain colored"></i> Power Electronics</li>
+</ul>
+</div>
+
+
+{/* NETWORKING */}
+<div className="skill-category">
+<h3>Networking & Systems</h3>
+<ul>
+<li><i className="devicon-cisco-plain colored"></i> Cisco Packet Tracer</li>
+<li><i className="devicon-linux-plain colored"></i> Linux</li>
+<li><i className="devicon-cisco-plain colored"></i> TCP/IP Fundamentals</li>
+<li><i className="devicon-cisco-plain colored"></i> Routing & Switching</li>
+<li><i className="devicon-linux-plain colored"></i> System Architecture</li>
+</ul>
+</div>
+
+
+{/* TOOLS */}
+<div className="skill-category">
+<h3>Cloud & Tools</h3>
+<ul>
+<li><i className="devicon-amazonwebservices-original colored"></i> AWS</li>
+<li><i className="devicon-google-plain colored"></i> Amplitude</li>
+<li><i className="devicon-pytest-plain colored"></i> Experimentation Frameworks</li>
+<li><i className="devicon-python-plain colored"></i> Data Analytics</li>
+<li><i className="devicon-markdown-original"></i> UML Diagrams</li>
+</ul>
+</div>
+
+</div>
+</section>
 
  <section className="projects" id="projects">
   <h2 className="section-title">Projects</h2>
 
   <div className="projects-grid">
-  {/* Project 1 */}
-  <a href="/projects/plant-watering" className="project-link">
-    <div className="project-card">
-      <div
-        className="project-image"
-        style={{ backgroundImage: "url('./plant-watering1.png')" }}
-      />
-      <div className="project-content">
-        <h3>Autonomous Plant Watering System</h3>
-        <p>
-          Designed an accessible, portable irrigation solution using a
-          mechanically powered cart that empowers differently abled volunteers to water garden beds independently.
-        </p>
-        <p className="tech">Tech: Python, GPIO, Raspberry Pi, IoT</p>
-        <span className="hover-overlay">→ Click to see more</span>
+    {/* Project 1 */}
+    <a href="/projects/plant-watering" className="project-link">
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./plant-watering1.png')" }}
+        />
+        <div className="project-content">
+          <h3>Autonomous Plant Watering System</h3>
+          <p>
+            Designed an accessible, portable irrigation solution using a mechanically powered
+            cart that empowers differently abled volunteers to water garden beds independently.
+          </p>
+          <p className="tech">Tech: Python, GPIO, Raspberry Pi, IoT</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
 
     {/* Project 2 */}
- <a href="/projects/portfolio" className="project-link">
-  <div className="project-card">
-    <div className="project-image" style={{ backgroundImage: "url('./portfolio.png')" }} />
-    <div className="project-content">
-      <h3>Personal Portfolio Website</h3>
-      <p>My fully custom-built personal website, showcasing my projects, experience, and personal brand with smooth animations, modern UI, and responsive design.</p>
-      <p className="tech">Tech: React, JavaScript, CSS3, HTML5, Framer Motion</p>
-      <span className="hover-overlay">→ Click to see more</span>
-    </div>
-  </div>
-</a>
-
-
-    <a href="/projects/PCBuild" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./pcbuild.png')" }} // replace with thumbnail
-    />
-    <div className="project-content">
-      <h3>Custom PC Build</h3>
-      <p>Built a high-performance PC for development, gaming, and rendering tasks.</p>
-      <p className="tech">Tech: RTX 3070, Ryzen 5800X, 32GB RAM</p>
-      <span className="hover-overlay">→ Click to see more</span>
-    </div>
-  </div>
-</a>
-
+    <a href="/projects/portfolio" className="project-link">
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./portfolio.png')" }}
+        />
+        <div className="project-content">
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            My fully custom-built personal website, showcasing my projects, experience,
+            and personal brand with smooth animations, modern UI, and responsive design.
+          </p>
+          <p className="tech">Tech: React, JavaScript, CSS3, HTML5, Framer Motion</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
 
     {/* Project 3 */}
+    <a href="/projects/AbyssGPT" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('./abyss-gpt.png')" }}
+    />
+    <div className="project-content">
+      <h3>AbyssGPT</h3>
+      <p>
+        Hackathon-built intelligent exploration assistant for deep-sea scientists,
+        combining natural language querying, pathfinding, environmental risk scoring,
+        and interactive mapping to support safe and sustainable submarine exploration.
+      </p>
+
+      <p className="tech">
+        Tech: Python, Streamlit, Plotly, Pandas, NetworkX, NLP, A* Pathfinding
+      </p>
+
+      <span className="hover-overlay">
+        → Click to see more
+      </span>
+    </div>
+  </div>
+</a>
+{/*Project 4*/}
+<a href="/projects/SpriteAdventureGame" className="project-link">
+  <div className="project-card">
+    <div
+      className="project-image"
+      style={{ backgroundImage: "url('./sprite-adventure.png')" }}
+    />
+    <div className="project-content">
+      <h3>Untitled Sprite Adventure RPG</h3>
+
+      <p>
+        Currently developing a 2D pixel-art adventure game featuring exploration,
+        environmental puzzles, combat systems, NPC interaction, and custom sprite-based
+        worldbuilding inspired by classic action RPGs.
+      </p>
+
+      <p className="tech">
+        Tech: Unity, C#, Tilemaps, Sprite Animation, Gameplay Systems
+      </p>
+
+      <span className="hover-overlay">
+        → In Development
+      </span>
+    </div>
+  </div>
+</a>
+
+    {/* Project 5 */}
+    <a href="/projects/PCBuild" className="project-link">
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./pcbuild.png')" }}
+        />
+        <div className="project-content">
+          <h3>Custom PC Build</h3>
+          <p>
+            Built a high-performance PC for development, gaming, and rendering tasks.
+          </p>
+          <p className="tech">Tech: RTX 3070, Ryzen 5800X, 32GB RAM</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+
+    {/* Project 6 */}
     <a href="/projects/ConquestGame" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./conquest-banner.png')" }} // Replace with actual image
-    />
-    <div className="project-content">
-      <h3>Conquest Strategy Game</h3>
-      <p>Text-based decision game where player choices shape the fate of warring nations.</p>
-      <p className="tech">Tech: JavaScript, HTML, CSS</p>
-      <span className="hover-overlay">→ Click to see more</span>
-    </div>
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./conquest-banner.png')" }}
+        />
+        <div className="project-content">
+          <h3>Conquest Strategy Game</h3>
+          <p>
+            Text-based decision game where player choices shape the fate of warring nations.
+          </p>
+          <p className="tech">Tech: JavaScript, HTML, CSS</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+
+    {/* Project 7 */}
+    <a href="/projects/ArtifactOfSalvation" className="project-link">
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./artifactbanner.png')" }}
+        />
+        <div className="project-content">
+          <h3>Artifact of Salvation</h3>
+          <p>
+            3D stealth-action RPG where an archaeologist races to retrieve a relic
+            before a greedy villain.
+          </p>
+          <p className="tech">Tech: Unity, C#, Blender, Photoshop</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+
+    {/* Project 8 */}
+    <a href="/projects/FloodTrafficAI" className="project-link">
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./flood-sensor.png')" }}
+        />
+        <div className="project-content">
+          <h3>Flood-Responsive Traffic Light System</h3>
+          <p>
+            AI-integrated Arduino stoplight that detects flooding and redirects traffic to safety.
+          </p>
+          <p className="tech">Tech: Arduino, C++, AI Logic, Water Sensors, LED Matrix</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
+
+    {/* Project 9 */}
+    <a href="/projects/CarBuild" className="project-link">
+      <div className="project-card">
+        <div
+          className="project-image"
+          style={{ backgroundImage: "url('./bmw.jpg')" }}
+        />
+        <div className="project-content">
+          <h3>Custom BMW F30 Build</h3>
+          <p>
+            A self-tuned BMW 3 Series F30 featuring a full body kit, upgraded intercooler,
+            performance air intake, and ambient starlight roof.
+          </p>
+          <p className="tech">Mods: ECU Tune, Front Lip, Rear Diffuser, Intercooler, Cold Air Intake, Starlights</p>
+          <span className="hover-overlay">→ Click to see more</span>
+        </div>
+      </div>
+    </a>
   </div>
-</a>
-
-
-{/* Project 4 */}
-<a href="/projects/ArtifactOfSalvation" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./artifactbanner.png')" }} // Replace with your actual image
-    />
-    <div className="project-content">
-      <h3>Artifact of Salvation</h3>
-      <p>3D stealth-action RPG where an archaeologist races to retrieve a relic before a greedy villain.</p>
-      <p className="tech">Tech: Unity, C#, Blender, Photoshop</p>
-      <span className="hover-overlay">→ Click to see more</span>
-    </div>
-  </div>
-</a>
-
-{/* Project 5 */}
-<a href="/projects/FloodTrafficAI" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./flood-sensor.png')" }} // Replace with your actual image
-    />
-    <div className="project-content">
-      <h3>Flood-Responsive Traffic Light System</h3>
-      <p>AI-integrated Arduino stoplight that detects flooding and redirects traffic to safety.</p>
-      <p className="tech">Tech: Arduino, C++, AI Logic, Water Sensors, LED Matrix</p>
-      <span className="hover-overlay">→ Click to see more</span>
-    </div>
-  </div>
-</a>
-
-<a href="/projects/CarBuild.js" className="project-link">
-  <div className="project-card">
-    <div
-      className="project-image"
-      style={{ backgroundImage: "url('./bmw.jpg')" }} 
-    />
-    <div className="project-content">
-      <h3>Custom BMW F30 Build</h3>
-      <p>A self-tuned BMW 3 series F30 featuring a full body kit, upgraded intercooler, performance air intake, and ambient starlight roof.</p>
-      <p className="tech">Mods: ECU Tune, Front Lip, Rear Diffuser, Intercooler, Cold Air Intake, Starlights</p>
-      <span className="hover-overlay">→ Click to see more</span>
-    </div>
-  </div>
-</a>
-
-
-</div>
 </section>
 
 
-{/*Initiatives Section */}
-<section className="initiatives" id="initiatives">
-  <h2>Initiatives & Ventures</h2>
-
-  <div className="initiatives-grid">
-    <div className="initiative-card">
-      <h3>Custom Car Refurbishment</h3>
-      <p>A growing side business focused on aesthetic upgrades and refinishing for luxury and sport vehicles. Built a local client base through word-of-mouth and online marketing.</p>
-      <span className="initiative-type">Side Venture</span>
-    </div>
-
-    <div className="initiative-card">
-      <h3>Startup Pitch: "Pharmadrop"</h3>
-      <p>Developed and pitched "Pharmadrop," an on-demand platform for real-time prescription delivery, optimizing pharmacy logistics and improving patient accessibility to medication.</p>
-      <span className="initiative-type">Startup Pitch</span>
-    </div>
-
-    <div className="initiative-card">
-      <h3>Creative Studio Concept - To be launched</h3>
-      <p>Developing a long-term business idea to merge engineering with design for custom watches, custom automotive tunes, apparel, and architecture with high-end aesthetic branding.</p>
-      <span className="initiative-type">Venture Concept</span>
-    </div>
-  </div>
-</section>
-
-{/*Workshops Section*/}       
-<section className="workshops" id="workshops">
-  <h2>Workshops & Research</h2>
-
-  <div className="workshop-grid">
-    <div className="workshop-card">
-      <div className="card-content">
-        <h3>Intro to Embedded Systems Workshop</h3>
-        <p>A hands-on session teaching Raspberry Pi, GPIO, and real-time coding to 50+ engineering students.</p>
-        <span className="tag workshop">Workshop</span>
-      </div>
-    </div>
-
-    <div className="workshop-card">
-      <div className="card-content">
-        <h3>Build-A-Thon: Smith Commerce & Beta-Camp</h3>
-        <p>Presented and pitched an app concept providing senior citizens with prescription medication reminders and delivery through a monthly membership subscription model.</p>
-        <span className="tag research">Startup Pitch</span>
-        <a href="./PharmaDrop - Pharmacist Business.pdf" target="_blank" rel="noopener noreferrer" className="view-link">📄 Learn More</a>
-      </div>
-    </div>
-
-    <div className="workshop-card">
-      <div className="card-content">
-        <h3>Effect of Viscosity on Impact Time</h3>
-        <p>Investigated how different fluid viscosities affect the time taken for a ball bearing to descend through them using projectile motion and Stokes’ Law.</p>
-        <span className="tag research">Research</span>
-        <a href="./How Does Viscosity of a Fluid Affect the Time Taken to Impact the Surface.docx" target="_blank" rel="noopener noreferrer" className="view-link">📄 View Research</a>
-      </div>
-    </div>
-
-    <div className="workshop-card">
-      <div className="card-content">
-        <h3>Boiling Points of Hydrocarbons</h3>
-        <p>Analyzed how molar mass, chain structure, and double bond positions affect boiling points in alkanes and alkenes through a chemistry database study.</p>
-        <span className="tag research">Research</span>
-        <a href="./Chemistry IA ~ Arsh Mobeen.docx" target="_blank" rel="noopener noreferrer" className="view-link">📄 View Research</a>
-      </div>
-    </div>
-  </div>
-</section>
 
     {/*Beyond Section*/}
  <BeyondSection />
-
-
-{/* Gallery Section */}
-<GallerySection />
 
 
   {/*Contact Section*/}
