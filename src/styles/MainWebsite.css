@@ -126,6 +126,7 @@ span{
     height: 400;
     margin-right: 2rem;
     margin-left: 10rem;
+    margin-top: 2.5rem;
     border-radius: 8px;
   }
   
@@ -237,7 +238,7 @@ span{
 .about-image {
   flex-shrink: 0;
   width: 250px;
-  margin-top: -25rem;
+  margin-top: -15rem;
 }
 
 .about-image img {

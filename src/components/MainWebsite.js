@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import '../styles/MainWebsite.css';
 import BeyondSection from './BeyondSection';
+import { useEffect } from 'react';
+
 
 function ParticleBackground() {
   const canvasRef = useRef(null);
@@ -341,6 +343,7 @@ const experienceCardVariants = {
 
 
 export default function MainWebsite() {
+  const [aboutTab, setAboutTab] = useState('experience');
   const [aboutTab, setAboutTab] = useState('education');
   const [isCompactTimeline, setIsCompactTimeline] = useState(false);
   const shouldReduceMotion = useReducedMotion();
