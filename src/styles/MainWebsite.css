@@ -782,7 +782,9 @@ span{
 .contact-subtext {
   font-size: 1rem;
   color: #aaa;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  max-width: 620px;
+  line-height: 1.6;
 }
 
 .contact-form {
@@ -791,6 +793,15 @@ span{
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid rgba(106, 90, 205, 0.18);
+  border-radius: 16px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+    rgba(22, 22, 24, 0.58);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .form-row {
@@ -809,16 +820,18 @@ span{
 .contact-form textarea {
   width: 100%;
   padding: 0.9rem 1.2rem;
-  border: 1px solid #333;
-  background-color: #1a1a1a;
+  border: 1px solid rgba(106, 90, 205, 0.18);
+  background-color: rgba(12, 12, 14, 0.82);
   color: #ececec;
   border-radius: 8px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color:  #6A5ACD ;
+  background-color: rgba(18, 18, 22, 0.94);
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.16), 0 0 22px rgba(106, 90, 205, 0.08);
   outline: none;
 }
 
@@ -830,34 +843,112 @@ span{
   font-size: 1rem;
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 10px 24px rgba(106, 90, 205, 0.18);
+  transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .submit-button:hover {
   background-color: #5844d8;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(106, 90, 205, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(106, 90, 205, 0.22);
 }
 
 .social-links {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .social-links a {
   color: #ececec;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
 }
 
-.social-links a:hover {
-  color:  #6A5ACD ;
+.social-email-link {
+  color: #b8b5d6;
+  font-size: 0.8rem;
+  line-height: 1;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(106, 90, 205, 0.34);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.social-email-link:hover {
+  color: #fff;
+  border-color: rgba(106, 90, 205, 0.72);
+}
+
+.social-icon-button {
+  position: relative;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  border: 1px solid rgba(106, 90, 205, 0.28);
+  border-radius: 999px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018)),
+    rgba(22, 22, 24, 0.72);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  color: #ececec;
+  font-size: 1.1rem;
+  transition: transform 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.social-icon-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  fill: currentColor;
+  pointer-events: none;
+  transition: transform 0.22s ease, color 0.22s ease, filter 0.22s ease;
+}
+
+.social-icon-button:hover {
+  color: #fff;
+  transform: translateY(-4px);
+  border-color: rgba(106, 90, 205, 0.72);
+  background:
+    linear-gradient(145deg, rgba(106, 90, 205, 0.18), rgba(79, 195, 247, 0.052)),
+    rgba(22, 22, 24, 0.88);
+  box-shadow: 0 14px 34px rgba(64, 2, 92, 0.32), 0 0 24px rgba(106, 90, 205, 0.2);
+}
+
+.social-icon-button:hover svg {
+  color: #d7fff3;
+  transform: translateY(-1px) scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(79, 195, 247, 0.42));
+}
+
+.social-icon-button:active {
+  transform: translateY(-1px);
 }
 
 .social-links i {
-  margin-right: 0.5rem;
+  margin-right: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
   

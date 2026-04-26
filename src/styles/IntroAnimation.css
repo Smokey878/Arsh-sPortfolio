@@ -30,6 +30,7 @@
   z-index: 3;
 }
 
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -83,3 +84,26 @@ html, body, #root {
   pointer-events: none;
 }
 
+.intro-container .intro-skip-hint,
+.intro-container .intro-skip-hint span {
+  font-size: 15px !important;
+  line-height: 1 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 400 !important;
+  color: #6A5ACD !important;
+  opacity: 0.55 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.intro-container .intro-skip-hint {
+  position: absolute !important;
+  top: 18px !important;
+  right: 24px !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+}

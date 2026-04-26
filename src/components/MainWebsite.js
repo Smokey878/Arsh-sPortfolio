@@ -3,6 +3,20 @@ import { motion, useReducedMotion } from 'framer-motion';
 import '../styles/MainWebsite.css';
 import BeyondSection from './BeyondSection';
 
+const GithubIcon = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.31 9.31 0 0 1 12 6.95c.85 0 1.7.12 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.07.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+  </svg>
+);
+
+const LinkedinIcon = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.35 8.02h4.3V23H.35V8.02ZM7.5 8.02h4.12v2.05h.06c.57-1.08 1.97-2.22 4.06-2.22 4.35 0 5.15 2.86 5.15 6.58V23h-4.3v-7.6c0-1.81-.03-4.15-2.53-4.15-2.54 0-2.93 1.98-2.93 4.02V23H7.5V8.02Z" />
+  </svg>
+);
+
+const emailAddress = 'arshmobeen87817@gmail.com';
+
 
 function ParticleBackground() {
   const canvasRef = useRef(null);
@@ -241,11 +255,10 @@ const experienceItems = [
     location: 'Mississauga, ON',
     date: 'June 2025 - October 2025',
     description:
-      'At i3 Institute, I built internal automation tooling that turned repetitive HR and operations tasks into cleaner, more reliable digital workflows. The work centered on Python and JavaScript automation, a React and FastAPI internal dashboard, and onboarding tracking systems that made team processes easier to monitor, update, and trust.',
+      'Built HR operations tooling around a React/FastAPI dashboard, onboarding workflows, and Python/JavaScript automation for cleaner internal process tracking.',
     highlights: [
-      'Built automation flows that reduced manual handoffs across onboarding and internal data workflows.',
-      'Developed dashboard features for tracking onboarding progress and surfacing process bottlenecks.',
-      'Improved data reliability by tightening validation paths and standardizing internal tool behavior.',
+      'Implemented dashboard views for onboarding status, task progress, and process bottlenecks.',
+      'Automated HR data updates and validation paths to reduce manual handoffs.',
     ],
     tags: ['Python', 'React', 'FastAPI', 'Automation', 'Internal Tools'],
   },
@@ -255,11 +268,10 @@ const experienceItems = [
     location: 'Mississauga, ON',
     date: 'April 2024 - August 2024',
     description:
-      'At Elite Life Financial, I worked on backend-oriented workflow automation and data processing tools that helped internal teams catch errors earlier and move information through operational pipelines more consistently. The experience felt like practical data engineering: validating inputs, automating repetitive checks, and building scripts that made internal processes less fragile.',
+      'Developed backend automation and data validation tooling for internal financial workflows, helping operational data move through pipelines with fewer errors.',
     highlights: [
-      'Created Python validation tooling for cleaner, more consistent data processing.',
-      'Built automation scripts that reduced repetitive manual review steps.',
-      'Supported internal process tooling with JavaScript and backend workflow improvements.',
+      'Created Python checks for input validation, exception handling, and cleaner data processing.',
+      'Automated repetitive review and reporting steps with scripts tied to internal workflow needs.',
     ],
     tags: ['Python', 'Automation', 'Data Engineering', 'JavaScript', 'Backend'],
   },
@@ -269,11 +281,10 @@ const experienceItems = [
     location: 'Burlington, ON',
     date: 'June 2023 - September 2023',
     description:
-      'At Pro Color Collision, I worked at the intersection of automotive operations and software-driven process visibility. I helped digitize repair workflows with job tracking logic, delay alerts, and parts-shortage notifications that made day-to-day coordination more transparent across a fast-moving service environment.',
+      'Built practical workflow tooling for automotive repair operations, connecting job tracking, delay alerts, and parts availability into clearer day-to-day visibility.',
     highlights: [
-      'Built a Python job tracking tool to improve visibility across active repair workflows.',
-      'Created automated alerts for delay risks and parts availability issues.',
-      'Connected automotive diagnostics thinking with practical operations tooling.',
+      'Built a Python job tracker to monitor active repair stages and surface stalled work.',
+      'Created automated notifications for delay risks, parts shortages, and workflow blockers.',
     ],
     tags: ['Automotive Systems', 'Python', 'Workflow Systems', 'Operations', 'Diagnostics'],
   },
@@ -283,11 +294,10 @@ const experienceItems = [
     location: 'London, ON',
     date: 'September 2024 - April 2025',
     description:
-      'At Western Formula Racing, I contributed to motorsport electronics systems that supported sensor integration, telemetry, and data acquisition for a Formula-style EV platform. My work connected embedded hardware with real-time diagnostics and analysis workflows used to understand vehicle behavior during testing.',
+      'Supported telemetry and data acquisition work for a Formula-style EV platform, connecting sensor signals, embedded hardware, and testing feedback loops.',
     highlights: [
-      'Integrated sensor systems for telemetry and real-time vehicle diagnostics.',
-      'Supported microcontroller-based data logging for track-side and post-run analysis.',
-      'Contributed to data acquisition workflows used for engineering feedback loops.',
+      'Integrated sensor and microcontroller workflows for vehicle telemetry and diagnostic data.',
+      'Supported data logging used for track-side checks and post-run engineering analysis.',
     ],
     tags: ['Embedded', 'Telemetry', 'Sensors', 'Data Acquisition', 'Motorsport'],
   },
@@ -297,11 +307,10 @@ const experienceItems = [
     location: 'Oakville, ON',
     date: 'May 2024 - August 2024',
     description:
-      'At Amity Global Foundation, I approached partnership development like a discovery and solution-design problem: identifying stakeholder needs, organizing outreach data, and supporting a partnership pipeline with clearer prioritization. The role strengthened how I translate ambiguity into structured, actionable strategy.',
+      'Structured partnership outreach like a lightweight pipeline system, organizing stakeholder data, priorities, and follow-up paths for clearer engagement.',
     highlights: [
-      'Mapped stakeholder priorities to support more targeted outreach and engagement.',
-      'Used data-informed thinking to organize partnership pipeline opportunities.',
-      'Helped shape solution-oriented communication for community and organizational partners.',
+      'Mapped stakeholder needs into a tracked partnership pipeline for targeted outreach.',
+      'Used data-informed prioritization to support clearer partner communication and follow-up.',
     ],
     tags: ['Strategy', 'Analytics', 'Partnerships', 'Stakeholder Engagement'],
   },
@@ -550,15 +559,26 @@ useEffect(() => {
     </div>
         ) : aboutTab === 'certifications' ? (
           <div>
-            <h3>Certifications</h3>
-            <p><strong>Professional & Safety Training</strong></p>
-            <ul className="certification-list">
-              <li>First Aid & CPR/C</li>
-              <li>SafeTalk</li>
-              <li>WHMIS Training</li>
-              <li>AODA</li>
-              <li>The Founder&apos;s Journey Certification</li>
-            </ul>
+            <h3>AWS Certification</h3>
+            <p><strong>Cloud Foundations</strong></p>
+            <p>
+              Foundational cloud architecture, deployment, and infrastructure concepts
+              for modern software systems.
+            </p>
+
+            <h3>Machine Learning Certification</h3>
+            <p><strong>AI &amp; Data Foundations</strong></p>
+            <p>
+              Applied machine learning concepts for data-driven problem solving,
+              model thinking, and intelligent systems.
+            </p>
+
+            <h3>First Aid &amp; CPR/C Certification</h3>
+            <p><strong>Practical Readiness</strong></p>
+            <p>
+              Emergency response training that supports safety, responsibility, and
+              readiness in team environments.
+            </p>
           </div>
         ) : null}
       </div>
@@ -791,7 +811,7 @@ useEffect(() => {
   {/*Contact Section*/}
 <section className="contact" id="contact">
   <h2>Contact Me</h2>
-  <p className="contact-subtext">I'd love to hear from you — let's connect and create something great together.</p>
+  <p className="contact-subtext">I'd love to hear from you. Let's connect and create something great together.</p>
 
   <form
     className="contact-form"
@@ -813,14 +833,30 @@ useEffect(() => {
   </form>
 
   <div className="social-links">
-    <a href="https://github.com/Smokey878" target="_blank" rel="noopener noreferrer">
-      <i className="fab fa-github"></i> GitHub
+    <a
+      className="social-icon-button"
+      href="https://github.com/Smokey878"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub"
+      title="GitHub"
+    >
+      <GithubIcon />
+      <span className="sr-only">GitHub</span>
     </a>
-    <a href="https://www.linkedin.com/in/arsh-mobeen/" target="_blank" rel="noopener noreferrer">
-      <i className="fab fa-linkedin"></i> LinkedIn
+    <a
+      className="social-icon-button"
+      href="https://www.linkedin.com/in/arsh-mobeen/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+      title="LinkedIn"
+    >
+      <LinkedinIcon />
+      <span className="sr-only">LinkedIn</span>
     </a>
-    <a href="mailto:arshmobeen87817@gmail.com">
-      <i className="fas fa-envelope"></i> Email Me
+    <a className="social-email-link" href={`mailto:${emailAddress}`}>
+      {emailAddress}
     </a>
   </div>
 </section>

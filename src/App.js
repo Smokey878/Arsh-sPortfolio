@@ -27,7 +27,10 @@ function App() {
           path="/"
           element={
             !showMain && window.location.hash === '' && !shouldSkipIntro ? (
-              <IntroAnimation onFinish={() => setShowMain(true)} />
+              <IntroAnimation
+                onFinish={() => setShowMain(true)}
+                onSkipIntro={() => setShowMain(true)}
+              />
             ) : (
               <MainWebsite />
             )
