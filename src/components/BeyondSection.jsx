@@ -21,7 +21,7 @@ const beyondItems = [
   {
     title: 'Swab the World',
     label: 'Community Health',
-    image: '/swab-the-world.JPEG',
+    image: '/swab-the-world.jpeg',
     caption: 'Swab drives, donor outreach, and stem cell registration awareness.',
     text: 'Organizing swab drives, recruiting students to register and swab, building awareness, and supporting donor outreach for life-saving stem cell matches.',
     tags: ['Health Impact', 'Swab Drives', 'Donors'],
