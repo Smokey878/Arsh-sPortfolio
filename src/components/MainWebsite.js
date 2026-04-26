@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import '../styles/MainWebsite.css';
 import BeyondSection from './BeyondSection';
+import PortfolioChatbot from './PortfolioChatbot';
 
 const GithubIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -496,6 +497,7 @@ useEffect(() => {
   className="main-website"
 >
   <ParticleBackground />
+  <PortfolioChatbot />
   <div className="fade-in">
       {/*Top Navigation*/}
       <nav className="top-nav">

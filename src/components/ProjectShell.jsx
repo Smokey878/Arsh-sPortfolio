@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ParticleBackground from './ParticleBackground';
+import PortfolioChatbot from './PortfolioChatbot';
 
 const navItems = [
   ['About', 'about'],
@@ -18,6 +19,7 @@ export default function ProjectShell({ children }) {
   return (
     <div className="project-shell">
       <ParticleBackground />
+      <PortfolioChatbot />
 
       <nav className="top-nav project-top-nav">
         <div className="nav-left">
