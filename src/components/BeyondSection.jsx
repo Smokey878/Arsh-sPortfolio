@@ -35,7 +35,7 @@ const beyondItems = [
     tags: ['Performance', 'Culture', 'Stage'],
   },
   {
-    title: 'Car Refurbishment / Side Hustle',
+    title: 'Car Refurbishment',
     label: 'Automotive Venture',
     image: '/car-refurbishment.png',
     caption: 'Hands-on restoration, detailing, visual design, and entrepreneurship.',
