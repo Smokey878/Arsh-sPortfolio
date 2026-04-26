@@ -328,16 +328,16 @@ const experienceCardVariants = {
     x: 0,
     y: 0,
   },
-  visible: (index = 0) => ({
+  visible: {
     opacity: 1,
     x: 0,
     y: 0,
     transition: {
-      duration: 0.85,
-      delay: index * 0.08,
+      duration: 0.35,
+      delay: 0,
       ease: [0.22, 1, 0.36, 1],
     },
-  }),
+  },
 };
 
 const projectItems = [
@@ -582,7 +582,6 @@ useEffect(() => {
           key={`${item.organization}-${item.role}`}
           className={`experience-card ${isLeft ? 'left' : 'right'}`}
           variants={experienceCardVariants}
-          custom={index}
           initial={
             shouldReduceMotion
               ? 'reduced'
@@ -593,7 +592,7 @@ useEffect(() => {
                   : 'hiddenRight'
           }
           whileInView={shouldReduceMotion ? 'reduced' : 'visible'}
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.05, margin: '0px 0px -10% 0px' }}
         >
           <div className="experience-card-inner">
             <div className="experience-meta">
