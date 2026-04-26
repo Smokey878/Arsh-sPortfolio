@@ -7,7 +7,7 @@ export default function CarBuild() {
     <ProjectShell>
       <ProjectCaseStudy
         title="Custom BMW F30 Build"
-        summary="A performance-aesthetic BMW 328i build combining tuning, airflow upgrades, body styling, and interior lighting."
+        summary="A performance-aesthetic BMW 330i build combining tuning, airflow upgrades, body styling, and interior lighting."
         tech={['ECU Tune', 'Intercooler', 'Cold Air Intake', 'Body Kit', 'Starlight Wiring']}
         heroImage="/bmw.jpg"
         heroAlt="Custom BMW F30 build"
@@ -17,7 +17,7 @@ export default function CarBuild() {
           { label: 'Focus', value: 'Performance and aesthetics' },
           { label: 'Output', value: 'Modified BMW F30' },
         ]}
-        overview="This build transforms a BMW F30 328i into a more expressive performance-aesthetic platform. It combines airflow and tuning upgrades with exterior styling and interior starlight lighting to create a car that feels engineered and designed."
+        overview="This build transforms a BMW F30 330i into a more expressive performance-aesthetic platform. It combines airflow and tuning upgrades with exterior styling and interior starlight lighting to create a car that feels engineered and designed."
         problem="The challenge was balancing performance, reliability, fitment, and visual identity. Each modification needed to work with the car's existing systems while contributing to a cohesive final build."
         approach={[
           'Installed performance-focused upgrades including ECU tuning, intercooler improvements, and cold air intake hardware.',

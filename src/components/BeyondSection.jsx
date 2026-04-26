@@ -5,7 +5,7 @@ const beyondItems = [
   {
     title: 'Pakistani Students’ Association President',
     label: 'Student Leadership',
-    image: '/psa-president.jpg',
+    image: '/psa-president.JPEG',
     caption: 'Cultural programming, team leadership, and student representation.',
     text: 'Leading cultural and community initiatives, managing event teams, representing students, and building programming that creates a stronger campus community.',
     tags: ['Leadership', 'Culture', 'Programming'],
@@ -21,7 +21,7 @@ const beyondItems = [
   {
     title: 'Swab the World',
     label: 'Community Health',
-    image: '/swab-the-world.jpg',
+    image: '/swab-the-world.JPEG',
     caption: 'Swab drives, donor outreach, and stem cell registration awareness.',
     text: 'Organizing swab drives, recruiting students to register and swab, building awareness, and supporting donor outreach for life-saving stem cell matches.',
     tags: ['Health Impact', 'Swab Drives', 'Donors'],
@@ -37,7 +37,7 @@ const beyondItems = [
   {
     title: 'Car Refurbishment / Side Hustle',
     label: 'Automotive Venture',
-    image: '/car-refurbishment.jpg',
+    image: '/car-refurbishment.png',
     caption: 'Hands-on restoration, detailing, visual design, and entrepreneurship.',
     text: 'Refurbishing and customizing vehicles through restoration, detailing, visual upgrades, and a hands-on venture mindset.',
     tags: ['Automotive', 'Design', 'Venture'],

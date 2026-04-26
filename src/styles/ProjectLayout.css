@@ -109,7 +109,8 @@ body {
 }
 
 .project-hero-media img,
-.case-image-grid img {
+.case-image-grid img,
+.case-image-grid video {
   display: block;
   width: 100%;
   transition: transform 0.35s ease, filter 0.35s ease;
@@ -121,7 +122,8 @@ body {
 }
 
 .project-hero-media:hover img,
-.case-image-grid figure:hover img {
+.case-image-grid figure:hover img,
+.case-image-grid figure:hover video {
   transform: scale(1.025);
   filter: saturate(1.06);
 }
@@ -228,7 +230,8 @@ body {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
 }
 
-.case-image-grid img {
+.case-image-grid img,
+.case-image-grid video {
   height: clamp(240px, 42vw, 460px);
   object-fit: contain;
   background:

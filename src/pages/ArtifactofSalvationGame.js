@@ -33,7 +33,7 @@ export default function ArtifactOfSalvation() {
         ]}
         images={[
           { src: '/artifact-temple.png', alt: 'Temple environment in Artifact of Salvation', caption: 'Temple exploration environment.' },
-          { src: '/artifact-banner.png', alt: 'Artifact of Salvation boss scene', caption: 'Story and confrontation imagery.' },
+          { src: '/artifact-banner.png', alt: 'Artifact of Salvation boss scene', caption: 'Story and confrontation imagery draft.' },
         ]}
         outcome="The prototype was praised for its story ambition and variety of gameplay systems. It strengthened my ability to connect object-oriented code architecture with player-facing design and game feel."
         links={[

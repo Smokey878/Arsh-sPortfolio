@@ -6,7 +6,7 @@ export default function SpriteAdventureGame() {
   return (
     <ProjectShell>
       <ProjectCaseStudy
-        title="Untitled Sprite Adventure RPG"
+        title="Sprite Adventure RPG"
         summary="A 2D pixel-art adventure game in development, focused on exploration, combat, puzzles, and modular gameplay systems."
         tech={['Unity', 'C#', 'Tilemaps', 'Sprite Animation', 'Gameplay Systems']}
         heroImage="/sprite-adventure.png"
@@ -32,7 +32,7 @@ export default function SpriteAdventureGame() {
           'The architecture is being kept modular so combat, inventory, and dialogue can evolve independently.',
         ]}
         images={[
-          { src: '/sprite-adventure.png', alt: 'Sprite adventure game prototype', caption: 'Early visual direction and gameplay prototype.' },
+          { src: '/sprite-adventure1.png', alt: 'Sprite adventure game prototype', caption: 'Early visual direction and gameplay prototype.' },
         ]}
         outcome="The project is helping me practice disciplined game architecture while still leaving room for creative worldbuilding. It is intentionally being built as a system-first prototype rather than a one-off scene."
       />

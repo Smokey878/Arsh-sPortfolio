@@ -377,7 +377,7 @@ const projectItems = [
   {
     href: '/projects/SpriteAdventureGame',
     image: './sprite-adventure.png',
-    title: 'Untitled Sprite Adventure RPG',
+    title: 'Sprite Adventure RPG',
     description: 'Pixel-art adventure game with exploration, combat, and puzzles.',
     tech: 'Unity, C#, Tilemaps, Sprite Animation',
     cta: 'In development',
@@ -401,6 +401,7 @@ const projectItems = [
   {
     href: '/projects/ArtifactOfSalvation',
     image: './artifactbanner.png',
+    imageClassName: 'project-image-artifact',
     title: 'Artifact of Salvation',
     description: '3D stealth-action RPG with puzzles, combat, and story progression.',
     tech: 'Unity, C#, Blender, Photoshop',
@@ -417,6 +418,7 @@ const projectItems = [
   {
     href: '/projects/CarBuild',
     image: './bmw.jpg',
+    imageClassName: 'project-image-car-build',
     title: 'Custom BMW F30 Build',
     description: 'Performance and aesthetic build with tuning and hardware upgrades.',
     tech: 'ECU Tune, Intercooler, Intake, Body Kit',
@@ -428,7 +430,43 @@ const projectItems = [
 export default function MainWebsite() {
   const [aboutTab, setAboutTab] = useState('education');
   const [isCompactTimeline, setIsCompactTimeline] = useState(false);
+  const [formStatus, setFormStatus] = useState('');
+  const [formStatusType, setFormStatusType] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+
+const handleContactSubmit = async (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  setIsSubmitting(true);
+  setFormStatus('');
+  setFormStatusType('');
+
+  try {
+    const response = await fetch('https://formspree.io/f/mjkwdjpr', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Form submission failed');
+    }
+
+    form.reset();
+    setFormStatus('Thanks. Your message has been sent.');
+    setFormStatusType('success');
+  } catch {
+    setFormStatus('Something went wrong. Please try again or email me directly.');
+    setFormStatusType('error');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 useEffect(() => {
   const hash = window.location.hash;
   if (hash) {
@@ -782,7 +820,7 @@ useEffect(() => {
       <a href={project.href} className="project-link" key={project.title}>
         <article className="project-card">
           <div
-            className="project-image"
+            className={`project-image ${project.imageClassName || ''}`}
             style={{ backgroundImage: `url('${project.image}')` }}
           >
             <span className="project-image-overlay">{project.cta}</span>
@@ -815,8 +853,7 @@ useEffect(() => {
 
   <form
     className="contact-form"
-    action="https://formspree.io/f/mjkwdjpr"
-    method="POST"
+    onSubmit={handleContactSubmit}
   >
     <div className="form-row">
       <input type="text" name="name" placeholder="Your Name" required />
@@ -829,7 +866,14 @@ useEffect(() => {
 
     <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
 
-    <button type="submit" className="submit-button">Send Message</button>
+    <button type="submit" className="submit-button" disabled={isSubmitting}>
+      {isSubmitting ? 'Sending...' : 'Send Message'}
+    </button>
+    {formStatus && (
+      <p className={`form-status ${formStatusType}`} role="status" aria-live="polite">
+        {formStatus}
+      </p>
+    )}
   </form>
 
   <div className="social-links">
@@ -861,6 +905,9 @@ useEffect(() => {
   </div>
 </section>
 
+<footer className="site-footer">
+  <p>© 2026 Arsh Mobeen</p>
+</footer>
 
       </div>
     </div>

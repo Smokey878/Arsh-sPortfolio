@@ -108,7 +108,19 @@ export default function ProjectCaseStudy({
           <div className="case-image-grid">
             {images.map((image) => (
               <figure key={image.src}>
-                <img src={image.src} alt={image.alt} />
+                {image.type === 'video' ? (
+                  <video
+                    src={image.src}
+                    aria-label={image.alt}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                  />
+                ) : (
+                  <img src={image.src} alt={image.alt} />
+                )}
                 {image.caption && <figcaption>{image.caption}</figcaption>}
               </figure>
             ))}

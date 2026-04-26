@@ -32,7 +32,12 @@ export default function AbyssGPT() {
           'Streamlit provides a lightweight product surface for rapid iteration and live interaction.',
         ]}
         images={[
-          { src: '/abyss-gpt.png', alt: 'AbyssGPT product interface', caption: 'Prototype interface for exploration planning.' },
+          {
+            type: 'video',
+            src: '/streamlit-app-2025-11-21-23-11-84.mp4',
+            alt: 'AbyssGPT Streamlit product interface demo',
+            caption: 'Streamlit interface demo for exploration planning.',
+          },
         ]}
         outcome="The project demonstrated how AI-facing interfaces can sit on top of classical algorithms and data workflows. It pushed me to think about technical usefulness, not just novelty, in a hackathon setting."
       />
