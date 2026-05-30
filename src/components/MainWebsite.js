@@ -251,6 +251,26 @@ function ParticleBackground() {
 
 const experienceItems = [
   {
+    role: 'AI Engineering Intern',
+    organization: 'Magna International / Modatek Systems',
+    location: 'Milton, ON',
+    date: 'May 2026 - August 2026',
+    description:
+      'Building AI Agents and automation workflows for Engineering and Operations using SQL data extraction, Microsoft Copilot Studio, and Power Platform tools.',
+    highlights: [
+      'Engineered SQL-based data extraction workflows to structure engineering database records for AI Agent automation.',
+      'Designed and connected Microsoft Copilot Studio AI Agents using topics, actions, connectors, and grounded knowledge sources.',
+    ],
+    tags: [
+      'AI Agents',
+      'Copilot Studio',
+      'SQL',
+      'Power Apps',
+      'Automation',
+      'Engineering Workflows',
+    ],
+  },
+  {
     role: 'HR Technologist Intern',
     organization: 'i3 Institute',
     location: 'Mississauga, ON',
